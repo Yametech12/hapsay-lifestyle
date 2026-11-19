@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hapsay Lifestyle: Statement Tees, Worn Loud</title>
 <meta name="description" content="Hapsay Lifestyle is a Philippine streetwear label making oversized graphic tees with statement back prints. Shop the Frights & Finds pop-up collection and order on Messenger.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23191612'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial Black, sans-serif' font-weight='900' fill='%23FAF5EC' text-anchor='middle'%3EH%3C/text%3E%3Ccircle cx='76' cy='26' r='9' fill='%23C8401F'/%3E%3C/svg%3E">
 <style>
+@font-face{font-family:"Anton";src:url("fonts/anton-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("fonts/instrumentsans-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("fonts/instrumentsans-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("fonts/instrumentsans-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("fonts/instrumentsans-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("fonts/instrumentsans-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
 :root{
   --paper:#FAF5EC;
   --cream:#F1E7D3;
@@ -26,30 +29,39 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
 body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+::selection{background:var(--red);color:#FFF7EA}
 img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
 h1,h2,.display{font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:.98;letter-spacing:.01em}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
 .kicker::before{content:"";width:26px;height:2px;background:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);transition:transform .18s ease,background .18s ease,color .18s ease;cursor:pointer}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;cursor:pointer}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.38) 50%,transparent 58%);transform:translateX(-130%);transition:transform .65s ease;pointer-events:none}
+.btn:hover::after{transform:translateX(130%)}
 .btn:active{transform:scale(.97)}
 .btn-red{background:var(--red);border-color:var(--red);color:#FFF7EA}
 .btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
 .btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost::after{background:linear-gradient(105deg,transparent 42%,rgba(25,22,18,.14) 50%,transparent 58%)}
 .btn-ghost:hover{background:var(--ink);color:var(--paper)}
 .btn-ink{background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:var(--red);border-color:var(--red)}
 :focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:6px}
 
 /* Header */
-header{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(250,245,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(250,245,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .35s ease,box-shadow .35s ease}
+header.scrolled{box-shadow:0 10px 34px rgba(25,22,18,.10)}
+header.hidden{transform:translateY(-100%)}
 .header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
 .wordmark{font-family:var(--font-display);font-size:27px;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
 .wordmark i{font-style:normal;color:var(--red)}
 nav.main{display:none;gap:30px}
-nav.main a{text-decoration:none;font-weight:600;font-size:15px}
+nav.main a{position:relative;text-decoration:none;font-weight:600;font-size:15px;padding:2px 0}
+nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;height:2.5px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .3s ease}
 nav.main a:hover{color:var(--red)}
+nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
 .header-cta{display:flex;align-items:center;gap:10px}
 .header-cta .btn{padding:10px 20px;font-size:14.5px}
 .burger{display:inline-flex;background:none;border:2px solid var(--ink);border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer}
@@ -60,117 +72,188 @@ nav.main a:hover{color:var(--red)}
 @media(min-width:860px){nav.main{display:flex}.burger{display:none}.mobile-nav{display:none!important}}
 
 /* Hero */
-.hero{padding:128px 0 0;position:relative}
-.hero-grid{display:grid;gap:34px;align-items:end}
-.hero h1{font-size:clamp(64px,17.5vw,168px);color:var(--ink)}
+.hero{padding:118px 0 0;position:relative;overflow:clip}
+.hero-ghost{position:absolute;top:216px;left:50%;transform:translateX(-50%) rotate(-4deg) translateY(var(--py,0px));font-family:var(--font-display);font-size:clamp(110px,20vw,260px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(25,22,18,.07);letter-spacing:.02em;white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.hero-top{position:relative;z-index:3;text-align:left}
+.hero h1{font-size:clamp(60px,15.5vw,148px);color:var(--ink)}
 .hero h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
 .hero h1 .rd{color:var(--red)}
-.hero-sub{max-width:52ch;color:var(--ink-2);font-size:18.5px;margin-top:18px}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:block;transform:translateY(110%);animation:riseIn .9s cubic-bezier(.19,1,.22,1) forwards}
+.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+.hero-line3{position:relative;z-index:3;margin-top:clamp(-56px,-5vw,-22px);pointer-events:none}
+.hero-line3 .line{display:block;overflow:hidden}
+.hero-line3 .line>span{display:block;transform:translateY(110%);animation:riseIn .9s cubic-bezier(.19,1,.22,1) .55s forwards}
+.hero-line3 h2{font-size:clamp(60px,15.5vw,148px)}
+@keyframes riseIn{to{transform:translateY(0)}}
+.hero-sub{max-width:56ch;color:var(--ink-2);font-size:18.5px;margin-top:20px;position:relative;z-index:3}
 .hero-sub strong{color:var(--ink)}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.hero-photo{position:relative}
-.hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);aspect-ratio:4/4.6;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink)}
-.sticker{position:absolute;display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#FFF7EA;font-weight:700;font-size:13.5px;padding:9px 15px;border-radius:999px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
-.sticker.s1{top:16px;left:-8px;transform:rotate(-5deg)}
-.sticker.s2{bottom:20px;right:-6px;transform:rotate(3deg);background:var(--ink)}
-@media(min-width:920px){
-  .hero-grid{grid-template-columns:1.15fr .85fr;gap:48px}
-  .hero-photo img{aspect-ratio:4/4.9}
-}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;position:relative;z-index:3}
+
+/* 3D stage */
+.stage-wrap{position:relative;z-index:2;margin-top:clamp(6px,2vw,18px)}
+.stage{position:relative;height:clamp(380px,100vw,540px);border-radius:calc(var(--radius) + 8px);background:radial-gradient(90% 60% at 18% 0%,rgba(200,64,31,.34) 0%,transparent 55%),radial-gradient(80% 55% at 85% 100%,rgba(200,64,31,.22) 0%,transparent 55%),radial-gradient(130% 100% at 50% 0%,#2B251C 0%,#1B1712 56%,#110E0B 100%);border:2px solid var(--ink);box-shadow:12px 12px 0 var(--red);overflow:hidden}
+.stage canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+.stage-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:22px}
+.stage-fallback img{height:100%;max-height:100%;width:auto;max-width:100%;object-fit:cover;border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.stage.webgl-on .stage-fallback{display:none}
+.stage-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--red);color:#FFF7EA;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .5s ease;white-space:nowrap}
+.stage.webgl-on .stage-hint{opacity:1}
+.stage.webgl-on.hint-off .stage-hint{opacity:0}
+.sticker{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#FFF7EA;font-weight:700;font-size:13.5px;padding:9px 15px;border-radius:999px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);animation:bob 5s ease-in-out infinite}
+.sticker.s1{top:18px;left:10px;transform:rotate(-5deg)}
+.sticker.s2{bottom:20px;right:10px;background:var(--ink);animation-delay:-2.4s}
+@keyframes bob{0%,100%{margin-top:0}50%{margin-top:-8px}}
+.stage-ui{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px}
+.stage-cap{flex:1 1 260px;min-width:min(260px,100%)}
+.stage-cap h3{font-family:var(--font-display);font-size:clamp(26px,5.4vw,36px);text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+.stage-cap .print-line{margin-top:5px}
+.stage-cap .colors{margin-top:9px}
+.stage-cap.swap{animation:capIn .45s ease}
+@keyframes capIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.stage-nav{display:flex;align-items:center;gap:12px}
+.stage-btn{width:50px;height:50px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-size:19px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease,color .2s ease,transform .15s ease}
+.stage-btn:hover{background:var(--ink);color:var(--paper)}
+.stage-btn:active{transform:scale(.93)}
+.stage-btn:disabled{opacity:.32;pointer-events:none}
+.stage-dots{display:flex;gap:7px;align-items:center}
+.stage-dots button{width:9px;height:9px;border-radius:99px;border:2px solid var(--ink);background:transparent;padding:0;cursor:pointer;transition:all .3s ease}
+.stage-dots button.active{width:26px;background:var(--red);border-color:var(--red)}
+.stage-order{margin-left:auto}
+@media(max-width:640px){.stage-order{margin-left:0;width:100%}.stage-order .btn{width:100%}}
+@media(min-width:920px){.stage{height:560px}}
 
 /* Marquee */
-.marquee{margin-top:56px;background:var(--ink);color:var(--paper);transform:rotate(-1.2deg);width:104%;margin-left:-2%;overflow:hidden;padding:13px 0;border-block:2px solid var(--ink)}
+.marquee-band{position:relative;margin-top:64px;padding:16px 0 8px}
+.marquee{position:relative;background:var(--ink);color:var(--paper);transform:rotate(-1.4deg);width:104%;margin-left:-2%;overflow:hidden;padding:13px 0;border-block:2px solid var(--ink);z-index:2}
+.marquee.red{background:var(--red);color:#FFF3E4;transform:rotate(1.1deg);margin-top:-14px;z-index:1;box-shadow:0 14px 30px rgba(25,22,18,.16)}
 .marquee-track{display:flex;gap:0;width:max-content;animation:scroll 26s linear infinite;font-family:var(--font-display);text-transform:uppercase;font-size:19px;letter-spacing:.06em;white-space:nowrap}
+.marquee.red .marquee-track{animation:scrollRev 32s linear infinite}
 .marquee-track span{padding-right:14px}
 .marquee-track b{color:var(--red);font-weight:400}
+.marquee.red .marquee-track b{color:var(--ink)}
+.marquee-band:hover .marquee-track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(-50%)}}
+@keyframes scrollRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 /* Sections */
-section{padding:84px 0 0}
-.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:14px;margin-bottom:30px}
+section{padding:88px 0 0;position:relative}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:14px;margin-bottom:30px;position:relative;z-index:2}
 .sec-head h2{font-size:clamp(38px,7.5vw,62px)}
 .sec-head p{color:var(--ink-2);max-width:44ch}
+.ghost{position:absolute;top:26px;right:-6px;transform:translateY(var(--py,0px));font-family:var(--font-display);font-size:clamp(84px,15vw,190px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(25,22,18,.08);text-transform:uppercase;white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
 
 /* Product grid */
-.grid{display:grid;gap:20px;grid-template-columns:1fr}
+.grid{display:grid;gap:20px;grid-template-columns:1fr;position:relative;z-index:2}
 @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.grid{grid-template-columns:1fr 1fr 1fr}}
-.card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:6px 6px 0 rgba(25,22,18,.9);transition:transform .2s ease}
-.card:hover{transform:translateY(-4px)}
-.card figure{position:relative;background:var(--cream)}
-.card figure img{width:100%;aspect-ratio:1/1;object-fit:cover}
-.tag{position:absolute;top:12px;left:12px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:6px 6px 0 rgba(25,22,18,.9);transform-style:preserve-3d}
+.card.tilt-ready{transition:transform .18s ease-out,box-shadow .3s ease}
+.card.tilt-ready:hover{box-shadow:14px 18px 0 rgba(25,22,18,.85)}
+.card figure{position:relative;background:var(--cream);overflow:hidden}
+.card figure img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .8s cubic-bezier(.19,1,.22,1)}
+.card:hover figure img{transform:scale(1.06)}
+.card figure::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.34),transparent 45%);opacity:0;transition:opacity .3s ease;pointer-events:none}
+.card:hover figure::after{opacity:1}
+.tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .tag.hot{background:var(--red);color:#FFF7EA}
 .card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
 .card-body h3{font-family:var(--font-display);font-size:23px;text-transform:uppercase;letter-spacing:.02em}
 .print-line{font-size:14.5px;color:var(--ink-2);font-style:italic}
 .colors{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
 .chip{font-size:12.5px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:3px 11px;background:var(--paper)}
+button.chip{font-family:inherit;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+button.chip:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .card-body .btn{margin-top:auto;padding:12px 20px;font-size:14.5px}
 
+/* Lookbook rail */
+.rail-wrap{position:relative;z-index:2}
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 20px;margin:0 -20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.rail-item{flex:0 0 min(72vw,300px);scroll-snap-align:start;border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;background:var(--card);box-shadow:6px 6px 0 rgba(25,22,18,.9);text-decoration:none;transition:transform .25s ease}
+.rail-item:hover{transform:translateY(-5px) rotate(-.5deg)}
+.rail-item img{width:100%;aspect-ratio:4/4.4;object-fit:cover;pointer-events:none}
+.rail-item figcaption{padding:13px 16px;font-family:var(--font-display);text-transform:uppercase;font-size:16.5px;letter-spacing:.03em;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rail-item figcaption span{color:var(--red);font-size:14px}
+@media(min-width:900px){.rail-item{flex-basis:320px}}
+.rail-progress{height:5px;background:rgba(25,22,18,.12);border-radius:99px;overflow:hidden;margin:2px 0 0}
+.rail-progress i{display:block;height:100%;width:12%;background:var(--red);border-radius:99px;transition:width .15s linear}
+
 /* Statements */
-.statements{display:grid;gap:20px}
+.statements{display:grid;gap:20px;position:relative;z-index:2}
 @media(min-width:900px){.statements{grid-template-columns:1.05fr .95fr;align-items:stretch}}
-.statement{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px;border:2px solid var(--ink)}
-.statement .q{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,4.6vw,38px);line-height:1.12}
+.statement{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px;border:2px solid var(--ink);position:relative;overflow:hidden}
+.statement::before{content:"";position:absolute;width:340px;height:340px;right:-120px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(200,64,31,.4),transparent 65%);pointer-events:none}
+.statement .q{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,4.6vw,38px);line-height:1.12;position:relative}
 .statement .q em{font-style:normal;color:var(--red)}
-.statement p{color:#CFC6B2;font-size:15.5px}
+.statement p{color:#CFC6B2;font-size:15.5px;position:relative}
+.statement-img{position:relative}
 .statement-img img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--red);min-height:280px}
 
 /* About */
-.about-grid{display:grid;gap:28px;align-items:center}
+.about-grid{display:grid;gap:28px;align-items:center;position:relative;z-index:2}
 @media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
 .about-grid img{border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);width:100%;aspect-ratio:4/3;object-fit:cover}
 .about-copy p{color:var(--ink-2);margin-top:14px}
 .about-copy p strong{color:var(--ink)}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
-.fact{border:2px solid var(--ink);border-radius:14px;padding:14px 16px;background:var(--card)}
+.fact{border:2px solid var(--ink);border-radius:14px;padding:14px 16px;background:var(--card);transition:transform .2s ease,box-shadow .2s ease}
+.fact:hover{transform:translateY(-3px);box-shadow:4px 4px 0 rgba(25,22,18,.85)}
 .fact b{display:block;font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:19px}
 .fact span{font-size:13.5px;color:var(--ink-2)}
 
 /* Steps */
-.steps{display:grid;gap:16px}
+.steps{display:grid;gap:16px;position:relative;z-index:2}
 @media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{border:2px solid var(--ink);border-radius:var(--radius);padding:24px 22px;background:var(--card)}
+.step{border:2px solid var(--ink);border-radius:var(--radius);padding:24px 22px;background:var(--card);transition:transform .2s ease,box-shadow .2s ease}
+.step:hover{transform:translateY(-4px);box-shadow:6px 6px 0 rgba(25,22,18,.9)}
 .step .num{font-family:var(--font-display);font-size:40px;color:var(--red);line-height:1}
 .step h3{font-size:19px;margin:10px 0 6px}
 .step p{color:var(--ink-2);font-size:15.5px}
 
 /* Popup feature */
-.popup{background:var(--red);color:#FFF3E4;border-radius:calc(var(--radius) + 6px);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:38px 28px;position:relative;overflow:hidden}
-.popup h2{font-size:clamp(36px,8vw,58px)}
-.popup p{max-width:56ch;margin-top:12px;color:#FFE3D1}
+.popup{background:var(--red);color:#FFF3E4;border-radius:calc(var(--radius) + 6px);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:38px 28px;position:relative;overflow:hidden;z-index:2}
+.popup h2{font-size:clamp(36px,8vw,58px);position:relative}
+.popup p{max-width:56ch;margin-top:12px;color:#FFE3D1;position:relative}
 .popup .btn{margin-top:22px;background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .popup .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.popup .big-star{position:absolute;right:-30px;top:-30px;width:190px;height:190px;opacity:.16;pointer-events:none}
+.popup .big-star{position:absolute;right:-30px;top:-30px;width:190px;height:190px;opacity:.16;pointer-events:none;animation:spinSlow 36s linear infinite}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
 
 /* FAQ */
-.faq-list{display:grid;gap:12px;max-width:820px}
+.faq-list{display:grid;gap:12px;max-width:820px;position:relative;z-index:2}
 details{border:2px solid var(--ink);border-radius:14px;background:var(--card);padding:0 20px}
 summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--font-display);font-size:22px;color:var(--red)}
-details[open ] summary::after{content:"-"}
-details p{padding:0 0 18px;color:var(--ink-2);font-size:15.5px}
+summary::after{content:"+";font-family:var(--font-display);font-size:22px;color:var(--red);display:inline-block;transition:transform .3s ease}
+details[open ] summary::after{transform:rotate(45deg)}
+.faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s ease}
+details[open ] .faq-body{grid-template-rows:1fr}
+.faq-body>div{overflow:hidden}
+.faq-body p{padding:0 0 18px;color:var(--ink-2);font-size:15.5px}
 
 /* Contact */
-.contact-grid{display:grid;gap:26px}
+.contact-grid{display:grid;gap:26px;position:relative;z-index:2}
 @media(min-width:920px){.contact-grid{grid-template-columns:.9fr 1.1fr}}
 .contact-card{border:2px solid var(--ink);border-radius:var(--radius);background:var(--card);padding:28px 24px;box-shadow:6px 6px 0 rgba(25,22,18,.9)}
+.contact-card.pulse{animation:pulseRing 1.1s ease}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(200,64,31,.55),6px 6px 0 rgba(25,22,18,.9)}100%{box-shadow:0 0 0 22px rgba(200,64,31,0),6px 6px 0 rgba(25,22,18,.9)}}
 .contact-card h3{font-family:var(--font-display);text-transform:uppercase;font-size:24px;margin-bottom:8px}
 .contact-card p{color:var(--ink-2);font-size:15.5px}
 form{display:grid;gap:14px}
 label{font-weight:600;font-size:14.5px;display:grid;gap:6px}
-input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
-input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none}
+input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%;transition:border-color .2s ease,box-shadow .2s ease}
+input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none;box-shadow:4px 4px 0 rgba(25,22,18,.85)}
 .form-note{font-size:13.5px;color:var(--ink-2)}
 .direct-links{display:grid;gap:12px;margin-top:20px}
-.direct-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;border:2px solid var(--ink);border-radius:14px;padding:15px 18px;text-decoration:none;font-weight:700;background:var(--paper)}
-.direct-links a:hover{background:var(--cream)}
+.direct-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;border:2px solid var(--ink);border-radius:14px;padding:15px 18px;text-decoration:none;font-weight:700;background:var(--paper);transition:background .2s ease,transform .2s ease}
+.direct-links a:hover{background:var(--cream);transform:translateX(4px)}
 .direct-links small{display:block;font-weight:500;color:var(--ink-2)}
 
 /* Footer */
-footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 34px}
+footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 34px;position:relative;overflow:clip}
 .foot-word{font-family:var(--font-display);font-size:clamp(52px,13vw,110px);text-transform:uppercase;line-height:1;color:var(--paper)}
 .foot-word i{font-style:normal;color:var(--red)}
 .foot-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;margin-top:22px;border-top:1px solid rgba(250,245,236,.2);padding-top:22px}
@@ -181,13 +264,17 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
 .credit a{color:var(--paper)}
 
 /* Reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.19,1,.22,1);transition-delay:var(--d,0s)}
+.reveal[data-reveal="left"]{transform:translateX(-34px)}
+.reveal[data-reveal="right"]{transform:translateX(34px)}
+.reveal[data-reveal="zoom"]{transform:scale(.94) translateY(14px)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .marquee-track{animation:none}
+  .marquee-track,.popup .big-star,.sticker{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
-  .card,.btn{transition:none}
+  .card,.btn,.faq-body{transition:none}
+  .hero h1 .line>span,.hero-line3 .line>span{transform:none;animation:none}
 }
 </style>
 </head>
@@ -223,31 +310,70 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- HERO -->
   <div class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="kicker">Philippine streetwear label</span>
-        <h1>Wear it<br><span class="out">loud,</span><br>live it <span class="rd">hapsay.</span></h1>
-        <p class="hero-sub">Oversized graphic tees with <strong>statement back prints</strong>, made for peace, growth, and good energy. Designed in the Philippines, dropped in limited runs and pop-ups, and ordered the easy way: <strong>one message on Messenger</strong>.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-red" href="#drop">Shop the drop</a>
-          <a class="btn btn-ghost" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Message to order</a>
+    <div class="hero-ghost" aria-hidden="true">Hapsay*</div>
+    <div class="wrap hero-top">
+      <span class="kicker">Philippine streetwear label</span>
+      <h1><span class="line"><span>Wear it</span></span><span class="line"><span><span class="out">loud,</span></span></span></h1>
+    </div>
+
+    <div class="wrap stage-wrap">
+      <div class="stage" id="stage">
+        <div class="stage-fallback">
+          <img src="img/hero.webp" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" fetchpriority="high">
+        </div>
+        <span class="stage-hint" aria-hidden="true">Drag to spin</span>
+      </div>
+      <span class="sticker s1">Frights &amp; Finds pop-up collection</span>
+      <span class="sticker s2">Free stickers with every order</span>
+    </div>
+
+    <div class="wrap hero-line3">
+      <h2><span class="line"><span>live it <span class="rd">hapsay.</span></span></span></h2>
+    </div>
+
+    <div class="wrap">
+      <div class="stage-ui">
+        <div class="stage-cap" id="stageCap">
+          <h3 id="capName">Vision Tee</h3>
+          <p class="print-line" id="capPrint">"Everyone has the same eyes, but not the same vision." Star and eye back print.</p>
+          <div class="colors" id="capColors"><span class="chip">Black</span><span class="chip">Dark gray</span><button type="button" class="chip jump" data-tee="Vision Tee">S to XL</button></div>
+        </div>
+        <div class="stage-nav">
+          <button class="stage-btn" id="stagePrev" type="button" aria-label="Previous tee"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="stage-dots" id="stageDots" role="tablist" aria-label="Choose a tee"></div>
+          <button class="stage-btn" id="stageNext" type="button" aria-label="Next tee"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="stage-order">
+          <a class="btn btn-red" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
         </div>
       </div>
-      <div class="hero-photo">
-        <img src="img/hero.webp" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" fetchpriority="high">
-        <span class="sticker s1">Frights &amp; Finds pop-up collection</span>
-        <span class="sticker s2">Free stickers with every order</span>
+    </div>
+
+    <div class="wrap">
+      <p class="hero-sub">Oversized graphic tees with <strong>statement back prints</strong>, made for peace, growth, and good energy. Designed in the Philippines, dropped in limited runs and pop-ups, and ordered the easy way: <strong>one message on Messenger</strong>.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#drop">Shop the drop</a>
+        <a class="btn btn-ghost" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Message to order</a>
       </div>
     </div>
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track" id="marqueeTrack">
-        <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Chasing your dreams <b>*</b>&nbsp;</span>
+
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee-track" data-marquee>
+          <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Chasing your dreams <b>*</b>&nbsp;</span>
+        </div>
+      </div>
+      <div class="marquee red">
+        <div class="marquee-track" data-marquee>
+          <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Chasing your dreams <b>*</b>&nbsp;</span>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- THE DROP -->
   <section id="drop">
+    <div class="ghost" aria-hidden="true">Frights</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
@@ -266,7 +392,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
           <div class="card-body">
             <h3>Vision Tee</h3>
             <p class="print-line">"Everyone has the same eyes, but not the same vision." Star and eye back print.</p>
-            <div class="colors"><span class="chip">Black</span><span class="chip">Dark gray</span><span class="chip">S to XL</span></div>
+            <div class="colors"><span class="chip">Black</span><span class="chip">Dark gray</span><button type="button" class="chip jump" data-tee="Vision Tee">S to XL</button></div>
             <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
@@ -279,7 +405,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
           <div class="card-body">
             <h3>Energy Tee</h3>
             <p class="print-line">"I only want peace, growth, money and good energy around me."</p>
-            <div class="colors"><span class="chip">Black</span><span class="chip">White</span><span class="chip">S to XL</span></div>
+            <div class="colors"><span class="chip">Black</span><span class="chip">White</span><button type="button" class="chip jump" data-tee="Energy Tee">S to XL</button></div>
             <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
@@ -292,7 +418,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
           <div class="card-body">
             <h3>SK8 Tee</h3>
             <p class="print-line">Small chest logo up front, cartoon skater holding a sign on the back.</p>
-            <div class="colors"><span class="chip">White</span><span class="chip">S to XL</span></div>
+            <div class="colors"><span class="chip">White</span><button type="button" class="chip jump" data-tee="SK8 Tee">S to XL</button></div>
             <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
@@ -305,7 +431,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
           <div class="card-body">
             <h3>Made Tee</h3>
             <p class="print-line">The heart-shaped Hapsay script logo, front and center on red.</p>
-            <div class="colors"><span class="chip">Red</span><span class="chip">S to XL</span></div>
+            <div class="colors"><span class="chip">Red</span><button type="button" class="chip jump" data-tee="Made Tee">S to XL</button></div>
             <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
@@ -318,7 +444,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
           <div class="card-body">
             <h3>Get Outside Tee</h3>
             <p class="print-line">"Get out of your phone." A character jumps out of the screen on the back.</p>
-            <div class="colors"><span class="chip">Cream</span><span class="chip">S to XL</span></div>
+            <div class="colors"><span class="chip">Cream</span><button type="button" class="chip jump" data-tee="Get Outside Tee">S to XL</button></div>
             <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
@@ -331,7 +457,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
           <div class="card-body">
             <h3>Lifestyle Tee</h3>
             <p class="print-line">Script Hapsay on the chest, big cursive Lifestyle across the back.</p>
-            <div class="colors"><span class="chip">Black</span><span class="chip">S to XL</span></div>
+            <div class="colors"><span class="chip">Black</span><button type="button" class="chip jump" data-tee="Lifestyle Tee">S to XL</button></div>
             <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
@@ -340,16 +466,68 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
     </div>
   </section>
 
+  <!-- LOOKBOOK -->
+  <section id="lookbook">
+    <div class="ghost" aria-hidden="true">Lookbook</div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="kicker">Lookbook</span>
+          <h2>Frights &amp; Finds, worn loud</h2>
+        </div>
+        <p>Statement back prints, made for peace, growth, and good energy.</p>
+      </div>
+      <div class="rail-wrap reveal" data-reveal="zoom">
+        <div class="rail" id="rail">
+          <figure class="rail-item">
+            <img src="img/hero.webp" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" loading="lazy">
+            <figcaption>Vision Tee <span>01</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/tee-energy.webp" alt="Hapsay Energy tee in white with bold back print" loading="lazy">
+            <figcaption>Energy Tee <span>02</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/tee-sk8.webp" alt="Hapsay SK8 tee in white with cartoon skater back print" loading="lazy">
+            <figcaption>SK8 Tee <span>03</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/surf-shop.webp" alt="Inside a tropical surf lifestyle shop with racks of graphic tees and surfboards" loading="lazy">
+            <figcaption>The Hapsay mindset <span>04</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/tee-made.webp" alt="Hapsay Made tee in red with heart script logo" loading="lazy">
+            <figcaption>Made Tee <span>05</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/tee-outside.webp" alt="Get Outside tee in cream with character back graphic" loading="lazy">
+            <figcaption>Get Outside Tee <span>06</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/beach-crew.webp" alt="Friends in oversized tees walking toward surfboards on a Philippine beach" loading="lazy">
+            <figcaption>Surf and skate life <span>07</span></figcaption>
+          </figure>
+          <figure class="rail-item">
+            <img src="img/tee-lifestyle.webp" alt="Lifestyle tee in black with cursive back wordmark" loading="lazy">
+            <figcaption>Lifestyle Tee <span>08</span></figcaption>
+          </figure>
+        </div>
+        <div class="rail-progress" aria-hidden="true"><i id="railBar"></i></div>
+      </div>
+    </div>
+  </section>
+
   <!-- STATEMENTS -->
   <section id="statements">
+    <div class="ghost" aria-hidden="true">Vision</div>
     <div class="wrap statements">
-      <div class="statement reveal">
+      <div class="statement reveal" data-reveal="left">
         <span class="kicker" style="color:#FF8A66">The Hapsay mindset</span>
         <p class="q">"Remember, everyone has the same eyes, but <em>not the same vision.</em>"</p>
         <p>Every Hapsay tee carries its message on the back, so the statement walks in after you do. The Vision and Energy prints started as pop-up favorites and became the label's signature.</p>
         <p class="q" style="font-size:clamp(20px,3.4vw,27px)">"Peace, growth, money and <em>good energy</em> only."</p>
       </div>
-      <div class="statement-img reveal">
+      <div class="statement-img reveal" data-reveal="right">
         <img src="img/surf-shop.webp" alt="Inside a tropical surf lifestyle shop with racks of graphic tees and surfboards" loading="lazy">
       </div>
     </div>
@@ -357,6 +535,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- ABOUT -->
   <section id="about">
+    <div class="ghost" aria-hidden="true">Hapsay</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
@@ -365,10 +544,10 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
         </div>
       </div>
       <div class="about-grid">
-        <div class="reveal">
+        <div class="reveal" data-reveal="left">
           <img src="img/beach-crew.webp" alt="Friends in oversized tees walking toward surfboards on a Philippine beach" loading="lazy">
         </div>
-        <div class="about-copy reveal">
+        <div class="about-copy reveal" data-reveal="right">
           <p><strong>Hapsay Lifestyle</strong> is a Philippine clothing label built around one idea: what you wear should say something. Its oversized tees pair clean fronts with loud, thoughtful back prints, from the star-and-eye Vision graphic to reminders to get off your phone and chase your dreams.</p>
           <p>The label sells the grassroots way: drops announced on Facebook, pop-up booths like <strong>Frights &amp; Finds</strong>, and orders packed and shipped by the team to a growing community of wearers in <strong>Cebu, Davao</strong>, and beyond.</p>
           <div class="facts">
@@ -384,6 +563,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- HOW TO ORDER -->
   <section id="order">
+    <div class="ghost" aria-hidden="true">Order</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
@@ -415,7 +595,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
   <!-- POPUP -->
   <section id="popup">
     <div class="wrap">
-      <div class="popup reveal">
+      <div class="popup reveal" data-reveal="zoom">
         <svg class="big-star" viewBox="0 0 100 100" fill="#FFF3E4" aria-hidden="true"><path d="M50 2 L61 38 L98 38 L68 59 L79 95 L50 73 L21 95 L32 59 L2 38 L39 38 Z"/></svg>
         <span class="kicker" style="color:#FFE3D1">Pop-ups</span>
         <h2>Frights &amp; Finds, the Halloween drop</h2>
@@ -437,23 +617,23 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
       <div class="faq-list reveal">
         <details>
           <summary>How much are the tees?</summary>
-          <p>Prices are confirmed on Messenger when you order, since drops and pop-up stocks change. Send the tee name and size and the team will quote you right away.</p>
+          <div class="faq-body"><div><p>Prices are confirmed on Messenger when you order, since drops and pop-up stocks change. Send the tee name and size and the team will quote you right away.</p></div></div>
         </details>
         <details>
           <summary>What sizes are available?</summary>
-          <p>Tees come in Small to XL with an oversized, unisex fit. If you are between sizes or want a closer fit, ask on Messenger and the team will help you pick.</p>
+          <div class="faq-body"><div><p>Tees come in Small to XL with an oversized, unisex fit. If you are between sizes or want a closer fit, ask on Messenger and the team will help you pick.</p></div></div>
         </details>
         <details>
           <summary>How do I pay?</summary>
-          <p>Orders are payment first, confirmed on Messenger, before your order is packed and shipped. The team will walk you through the payment options in chat.</p>
+          <div class="faq-body"><div><p>Orders are payment first, confirmed on Messenger, before your order is packed and shipped. The team will walk you through the payment options in chat.</p></div></div>
         </details>
         <details>
           <summary>Do you ship outside your city?</summary>
-          <p>Yes. Orders are packed and shipped to customers around the Philippines, including the brand's community in Cebu and Davao.</p>
+          <div class="faq-body"><div><p>Yes. Orders are packed and shipped to customers around the Philippines, including the brand's community in Cebu and Davao.</p></div></div>
         </details>
         <details>
           <summary>What comes with my order?</summary>
-          <p>Your tee, plus free Hapsay stickers with every order. Pop-up collections are limited runs, so once a design sells out it may not come back.</p>
+          <div class="faq-body"><div><p>Your tee, plus free Hapsay stickers with every order. Pop-up collections are limited runs, so once a design sells out it may not come back.</p></div></div>
         </details>
       </div>
     </div>
@@ -470,7 +650,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
         <p>Fill this in and we will hand you to Messenger with your order ready to send. Or skip the form and message the Page directly.</p>
       </div>
       <div class="contact-grid">
-        <div class="contact-card reveal">
+        <div class="contact-card reveal" data-reveal="left">
           <h3>Quick inquiry</h3>
           <p>Tell us what you are eyeing. The button below opens Messenger with your message composed, nothing is sent until you tap send there.</p>
           <div class="direct-links">
@@ -482,7 +662,7 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
             </a>
           </div>
         </div>
-        <div class="contact-card reveal">
+        <div class="contact-card reveal" data-reveal="right" id="formCard">
           <form id="inquiryForm">
             <label>Your name
               <input type="text" id="fName" name="name" placeholder="Juan Dela Cruz" autocomplete="name" required>
@@ -541,6 +721,16 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
 <script>
 (function(){
+  var TEES = [
+    {name:"Vision Tee", print:"\"Everyone has the same eyes, but not the same vision.\" Star and eye back print.", colors:["Black","Dark gray"], img:"img/hero.webp", alt:"Model wearing the Hapsay Vision tee, showing the star and eye back print"},
+    {name:"Energy Tee", print:"\"I only want peace, growth, money and good energy around me.\"", colors:["Black","White"], img:"img/tee-energy.webp", alt:"Hapsay Energy tee in white with bold back print"},
+    {name:"SK8 Tee", print:"Small chest logo up front, cartoon skater holding a sign on the back.", colors:["White"], img:"img/tee-sk8.webp", alt:"Hapsay SK8 tee in white with cartoon skater back print"},
+    {name:"Made Tee", print:"The heart-shaped Hapsay script logo, front and center on red.", colors:["Red"], img:"img/tee-made.webp", alt:"Hapsay Made tee in red with heart script logo"},
+    {name:"Get Outside Tee", print:"\"Get out of your phone.\" A character jumps out of the screen on the back.", colors:["Cream"], img:"img/tee-outside.webp", alt:"Get Outside tee in cream with character back graphic"},
+    {name:"Lifestyle Tee", print:"Script Hapsay on the chest, big cursive Lifestyle across the back.", colors:["Black"], img:"img/tee-lifestyle.webp", alt:"Lifestyle tee in black with cursive back wordmark"}
+  ];
+  var current = 0;
+
   // Mobile nav
   var burger = document.getElementById('burger');
   var mobileNav = document.getElementById('mobileNav');
@@ -555,17 +745,187 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
     });
   });
 
-  // Duplicate marquee content for a seamless loop
-  var track = document.getElementById('marqueeTrack');
-  track.innerHTML += track.innerHTML;
+  // Header state: shadow on scroll, hide on scroll down, show on scroll up
+  var header = document.querySelector('header');
+  var lastY = 0;
+  function onScrollHeader(){
+    var y = window.scrollY || 0;
+    header.classList.toggle('scrolled', y > 10);
+    if(y > 520 && y > lastY + 4){ header.classList.add('hidden'); }
+    else if(y < lastY - 4 || y < 200){ header.classList.remove('hidden'); }
+    lastY = y;
+  }
 
-  // Reveal on scroll
+  // Ghost word parallax
+  var ghosts = document.querySelectorAll('.ghost, .hero-ghost');
+  function onScrollGhosts(){
+    var mid = window.innerHeight / 2;
+    ghosts.forEach(function(el){
+      var r = el.parentElement.getBoundingClientRect();
+      var off = ((r.top + r.height / 2) - mid) * -0.045;
+      el.style.setProperty('--py', off.toFixed(1) + 'px');
+    });
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(function(){ onScrollHeader(); onScrollGhosts(); ticking = false; });
+    }
+  }, {passive:true});
+  onScrollHeader(); onScrollGhosts();
+
+  // Duplicate marquee content for a seamless loop
+  document.querySelectorAll('[data-marquee]').forEach(function(track){
+    track.innerHTML += track.innerHTML;
+  });
+
+  // Reveal on scroll, with per-group stagger
+  var byParent = {};
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var p = el.parentElement;
+    byParent[p ? p.className : ''] = byParent[p ? p.className : ''] || 0;
+  });
+  var counters = {};
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var key = el.parentElement ? el.parentElement.className : '';
+    counters[key] = (counters[key] || 0) + 1;
+    el.style.setProperty('--d', Math.min((counters[key] - 1) * 0.08, 0.4) + 's');
+  });
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+        if(e.target.classList.contains('card')){
+          setTimeout(function(){ e.target.classList.add('tilt-ready'); }, 750);
+        }
+      }
     });
   }, {threshold: .12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Pointer tilt and glare on product cards (fine pointers only)
+  if(window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.card').forEach(function(card){
+      var fig = card.querySelector('figure');
+      card.addEventListener('pointermove', function(ev){
+        if(!card.classList.contains('tilt-ready')) return;
+        var r = card.getBoundingClientRect();
+        var px = (ev.clientX - r.left) / r.width;
+        var py = (ev.clientY - r.top) / r.height;
+        card.style.transform = 'perspective(950px) rotateX(' + ((0.5 - py) * 7).toFixed(2) + 'deg) rotateY(' + ((px - 0.5) * 9).toFixed(2) + 'deg) translateY(-4px)';
+        if(fig){ fig.style.setProperty('--mx', (px * 100) + '%'); fig.style.setProperty('--my', (py * 100) + '%'); }
+      });
+      card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+    });
+  }
+
+  // Stage caption and fallback image sync
+  var cap = document.getElementById('stageCap');
+  var capName = document.getElementById('capName');
+  var capPrint = document.getElementById('capPrint');
+  var capColors = document.getElementById('capColors');
+  var dotsWrap = document.getElementById('stageDots');
+  var fallbackImg = document.querySelector('.stage-fallback img');
+  TEES.forEach(function(tee, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Show ' + tee.name);
+    if(i === 0) b.classList.add('active');
+    b.addEventListener('click', function(){ goTo(i); });
+    dotsWrap.appendChild(b);
+  });
+  function renderCaption(i){
+    var tee = TEES[i];
+    capName.textContent = tee.name;
+    capPrint.textContent = tee.print;
+    var html = '';
+    tee.colors.forEach(function(c){ html += '<span class="chip">' + c + '</span>'; });
+    html += '<button type="button" class="chip jump" data-tee="' + tee.name + '">S to XL</button>';
+    capColors.innerHTML = html;
+    bindJumps(capColors);
+    dotsWrap.querySelectorAll('button').forEach(function(d, di){
+      d.classList.toggle('active', di === i);
+    });
+    document.getElementById('stagePrev').disabled = (i === 0);
+    document.getElementById('stageNext').disabled = (i === TEES.length - 1);
+    cap.classList.remove('swap');
+    void cap.offsetWidth;
+    cap.classList.add('swap');
+    if(fallbackImg && !document.getElementById('stage').classList.contains('webgl-on')){
+      fallbackImg.src = tee.img;
+      fallbackImg.alt = tee.alt;
+    }
+  }
+  var expecting = null;
+  function goTo(i){
+    current = Math.max(0, Math.min(TEES.length - 1, i));
+    expecting = current;
+    renderCaption(current);
+    if(window.HapsayStage){ window.HapsayStage.focus(current); }
+  }
+  document.getElementById('stagePrev').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('stageNext').addEventListener('click', function(){ goTo(current + 1); });
+  window.HapsayUI = {
+    syncCaption: function(i){
+      if(expecting !== null){
+        if(i === expecting){ expecting = null; }
+        return;
+      }
+      if(i !== current){ current = i; renderCaption(i); }
+    },
+    noteDrag: function(){ expecting = null; },
+    getIndex: function(){ return current; }
+  };
+  renderCaption(0);
+
+  // Size chips jump to the inquiry form with the tee preselected
+  function bindJumps(scope){
+    scope.querySelectorAll('.chip.jump').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var tee = chip.getAttribute('data-tee');
+        var sel = document.getElementById('fTee');
+        for(var i = 0; i < sel.options.length; i++){
+          if(sel.options[i].text === tee){ sel.selectedIndex = i; break; }
+        }
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        var card = document.getElementById('formCard');
+        setTimeout(function(){
+          card.classList.remove('pulse');
+          void card.offsetWidth;
+          card.classList.add('pulse');
+          document.getElementById('fName').focus({preventScroll:true});
+        }, 650);
+      });
+    });
+  }
+  bindJumps(document);
+
+  // Lookbook rail: drag to scroll and progress bar
+  var rail = document.getElementById('rail');
+  var railBar = document.getElementById('railBar');
+  function railProgress(){
+    var max = rail.scrollWidth - rail.clientWidth;
+    var f = max > 0 ? rail.scrollLeft / max : 0;
+    railBar.style.width = (12 + f * 88) + '%';
+  }
+  rail.addEventListener('scroll', railProgress, {passive:true});
+  railProgress();
+  var railDown = false, railX = 0, railL = 0;
+  rail.addEventListener('pointerdown', function(ev){
+    if(ev.pointerType !== 'mouse') return;
+    railDown = true; railX = ev.clientX; railL = rail.scrollLeft;
+    rail.classList.add('dragging');
+  });
+  window.addEventListener('pointermove', function(ev){
+    if(!railDown) return;
+    rail.scrollLeft = railL - (ev.clientX - railX);
+  });
+  window.addEventListener('pointerup', function(){
+    railDown = false;
+    rail.classList.remove('dragging');
+  });
 
   // Inquiry form -> Messenger with a composed message
   document.getElementById('inquiryForm').addEventListener('submit', function(ev){
@@ -580,6 +940,331 @@ footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 3
     var url = 'https://m.me/HapsayLifestyle?text=' + encodeURIComponent(text);
     window.open(url, '_blank', 'noopener');
   });
+})();
+</script>
+<script src="vendor/three.min.js"></script>
+<script>
+(function(){
+  var stageEl = document.getElementById('stage');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced || typeof THREE === 'undefined'){ return; }
+
+  var TEES = [
+    {name:"Vision Tee", file:"vision", print:"\"Everyone has the same eyes, but not the same vision.\" Star and eye back print."},
+    {name:"Energy Tee", file:"energy", print:"\"I only want peace, growth, money and good energy around me.\""},
+    {name:"SK8 Tee", file:"sk8", print:"Small chest logo up front, cartoon skater holding a sign on the back."},
+    {name:"Made Tee", file:"made", print:"The heart-shaped Hapsay script logo, front and center on red."},
+    {name:"Get Outside Tee", file:"outside", print:"\"Get out of your phone.\" A character jumps out of the screen on the back."},
+    {name:"Lifestyle Tee", file:"lifestyle", print:"Script Hapsay on the chest, big cursive Lifestyle across the back."}
+  ];
+  var INK = '#191612', CREAM = '#FAF5EC', MUTED = '#CFC6B2', RED = '#C8401F';
+
+  function starPath(ctx, cx, cy, r){
+    ctx.beginPath();
+    for(var i = 0; i < 10; i++){
+      var rad = (i % 2 === 0) ? r : r * 0.42;
+      var a = -Math.PI / 2 + i * Math.PI / 5;
+      var x = cx + Math.cos(a) * rad, y = cy + Math.sin(a) * rad;
+      if(i === 0){ ctx.moveTo(x, y); } else { ctx.lineTo(x, y); }
+    }
+    ctx.closePath();
+  }
+  function roundRect(ctx, x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function wrapText(ctx, text, maxW){
+    var words = text.split(' '), lines = [], line = '';
+    words.forEach(function(w){
+      var test = line ? line + ' ' + w : w;
+      if(ctx.measureText(test).width > maxW && line){ lines.push(line); line = w; }
+      else { line = test; }
+    });
+    if(line) lines.push(line);
+    return lines;
+  }
+  function makeBackTexture(tee){
+    var c = document.createElement('canvas'); c.width = 512; c.height = 640;
+    var x = c.getContext('2d');
+    roundRect(x, 0, 0, 512, 640, 40); x.fillStyle = INK; x.fill();
+    roundRect(x, 14, 14, 484, 612, 30); x.strokeStyle = 'rgba(250,245,236,.28)'; x.lineWidth = 3; x.stroke();
+    starPath(x, 256, 158, 76); x.fillStyle = RED; x.fill();
+    x.textAlign = 'center'; x.fillStyle = CREAM;
+    var size = 60;
+    x.font = size + 'px Anton, "Arial Black", sans-serif';
+    while(x.measureText(tee.name.toUpperCase()).width > 430 && size > 30){ size -= 4; x.font = size + 'px Anton, "Arial Black", sans-serif'; }
+    x.fillText(tee.name.toUpperCase(), 256, 330);
+    x.font = 'italic 27px "Instrument Sans", sans-serif'; x.fillStyle = MUTED;
+    var lines = wrapText(x, tee.print, 415).slice(0, 5);
+    lines.forEach(function(ln, i){ x.fillText(ln, 256, 392 + i * 38); });
+    x.font = '23px Anton, "Arial Black", sans-serif'; x.fillStyle = 'rgba(250,245,236,.55)';
+    x.fillText('HAPSAY LIFESTYLE', 256, 592);
+    var t = new THREE.CanvasTexture(c);
+    t.encoding = THREE.sRGBEncoding;
+    t.anisotropy = 4;
+    return t;
+  }
+  function makePillTexture(){
+    var c = document.createElement('canvas'); c.width = 640; c.height = 320;
+    var x = c.getContext('2d');
+    roundRect(x, 10, 10, 620, 300, 150); x.fillStyle = RED; x.fill();
+    x.lineWidth = 13; x.strokeStyle = INK; x.stroke();
+    x.textAlign = 'center'; x.fillStyle = CREAM;
+    x.font = '94px Anton, "Arial Black", sans-serif';
+    x.fillText('FREE STICKERS', 320, 152);
+    x.font = '55px Anton, "Arial Black", sans-serif';
+    x.fillText('WITH EVERY ORDER', 320, 238);
+    var t = new THREE.CanvasTexture(c);
+    t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  function makeStarTexture(){
+    var c = document.createElement('canvas'); c.width = 256; c.height = 256;
+    var x = c.getContext('2d');
+    starPath(x, 128, 128, 102); x.fillStyle = RED; x.fill();
+    x.lineWidth = 11; x.strokeStyle = INK; x.stroke();
+    var t = new THREE.CanvasTexture(c);
+    t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  function makeShadowTexture(){
+    var c = document.createElement('canvas'); c.width = 256; c.height = 256;
+    var x = c.getContext('2d');
+    var g = x.createRadialGradient(128, 128, 8, 128, 128, 126);
+    g.addColorStop(0, 'rgba(255,96,44,.9)');
+    g.addColorStop(0.55, 'rgba(200,64,31,.42)');
+    g.addColorStop(1, 'rgba(200,64,31,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+    return new THREE.CanvasTexture(c);
+  }
+
+  function init(){
+    var renderer;
+    try{
+      renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+    }catch(e){ return; }
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.06;
+    stageEl.appendChild(renderer.domElement);
+    renderer.domElement.setAttribute('aria-hidden', 'true');
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    scene.add(new THREE.HemisphereLight(0xfff6e6, 0x8a7a5c, 0.8));
+    var key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(4, 6, 8); scene.add(key);
+    var rim = new THREE.DirectionalLight(0xff4a22, 0.55); rim.position.set(-6, 2, -4); scene.add(rim);
+
+    var group = new THREE.Group();
+    group.position.y = 0.22;
+    scene.add(group);
+
+    var shadow = new THREE.Mesh(
+      new THREE.PlaneGeometry(8.8, 2.9),
+      new THREE.MeshBasicMaterial({map:makeShadowTexture(), transparent:true, opacity:0.38, depthWrite:false, blending:THREE.AdditiveBlending})
+    );
+    shadow.scale.set(0.88, 0.85, 1);
+    shadow.position.set(0, -1.78, -0.55);
+    shadow.renderOrder = 0;
+    group.add(shadow);
+
+    var W = 2.2, H = 2.75;
+    var geo = new THREE.PlaneGeometry(W, H);
+    var loader = new THREE.TextureLoader();
+    var cards = [], pickMeshes = [];
+    TEES.forEach(function(tee, i){
+      var g = new THREE.Group();
+      var frontTex = loader.load('img/card-' + tee.file + '.webp');
+      frontTex.encoding = THREE.sRGBEncoding;
+      frontTex.anisotropy = 4;
+      var frontMat = new THREE.MeshStandardMaterial({map:frontTex, transparent:true, roughness:0.6, metalness:0.04});
+      var front = new THREE.Mesh(geo, frontMat);
+      front.position.z = 0.016;
+      front.userData.index = i;
+      var backMat = new THREE.MeshStandardMaterial({map:makeBackTexture(tee), transparent:true, roughness:0.65, metalness:0.04});
+      var back = new THREE.Mesh(geo, backMat);
+      back.rotation.y = Math.PI;
+      back.position.z = -0.016;
+      back.userData.index = i;
+      var rimMat = new THREE.MeshBasicMaterial({color:0x191612});
+      var rimP = new THREE.Mesh(new THREE.PlaneGeometry(W + 0.075, H + 0.075), rimMat);
+      rimP.position.z = -0.032;
+      g.add(rimP); g.add(back); g.add(front);
+      group.add(g);
+      cards.push({group:g, mats:[frontMat, backMat], phase: i * 1.7});
+      pickMeshes.push(front, back);
+    });
+
+    var star = new THREE.Mesh(
+      new THREE.PlaneGeometry(1.0, 1.0),
+      new THREE.MeshBasicMaterial({map:makeStarTexture(), transparent:true, depthWrite:false})
+    );
+    star.renderOrder = 30;
+    group.add(star);
+    var pill = new THREE.Mesh(
+      new THREE.PlaneGeometry(2.05, 1.02),
+      new THREE.MeshBasicMaterial({map:makePillTexture(), transparent:true, depthWrite:false})
+    );
+    pill.renderOrder = 30;
+    group.add(pill);
+    var starBase = {x:-3.0, y:1.55, z:-0.5, s:1};
+    var pillBase = {x:2.72, y:-1.5, z:-0.5, s:1};
+
+    var cfg = {step:0.58, R:3.5};
+    function fit(){
+      var w = stageEl.clientWidth, h = stageEl.clientHeight;
+      if(!w || !h) return;
+      var portrait = (w / h) < 1;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, portrait ? 1.8 : 2));
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      cfg.step = portrait ? 0.55 : 0.58;
+      cfg.R = portrait ? 3.15 : 3.5;
+      var halfW = portrait ? 2.15 : 3.75;
+      camera.position.z = halfW / (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect);
+      camera.position.y = 0.12;
+      camera.lookAt(0, 0.02, 0);
+      camera.updateProjectionMatrix();
+      if(portrait){
+        starBase = {x:-1.55, y:-1.6, z:0.65, s:0.8};
+        pillBase = {x:1.42, y:-1.66, z:0.65, s:0.66};
+      } else {
+        starBase = {x:-2.95, y:1.15, z:-0.5, s:1};
+        pillBase = {x:2.72, y:-1.2, z:-0.5, s:1};
+      }
+      star.position.set(starBase.x, starBase.y, starBase.z);
+      star.scale.setScalar(starBase.s);
+      pill.position.set(pillBase.x, pillBase.y, pillBase.z);
+      pill.scale.setScalar(pillBase.s);
+    }
+    fit();
+    if(window.ResizeObserver){ new ResizeObserver(fit).observe(stageEl); }
+    window.addEventListener('resize', fit);
+
+    stageEl.classList.add('webgl-on');
+
+    var focusTarget = 0, focusCur = 0, lastR = 0;
+    var dragging = false, dragStartX = 0, dragStartTarget = 0, lastX = 0, vel = 0, downT = 0, moved = 0;
+    var px = 0, py = 0, tpx = 0, tpy = 0;
+    var lastInteract = performance.now();
+    var ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+    var el = renderer.domElement;
+
+    el.addEventListener('pointerdown', function(e){
+      if(window.HapsayUI && window.HapsayUI.noteDrag){ window.HapsayUI.noteDrag(); }
+      dragging = true; moved = 0;
+      dragStartX = lastX = e.clientX;
+      dragStartTarget = focusTarget;
+      vel = 0; downT = performance.now();
+      lastInteract = downT;
+      try{ el.setPointerCapture(e.pointerId); }catch(err){}
+    });
+    el.addEventListener('pointermove', function(e){
+      var rect = el.getBoundingClientRect();
+      if(dragging){
+        var dx = e.clientX - dragStartX;
+        moved = Math.max(moved, Math.abs(dx));
+        focusTarget = Math.max(-0.45, Math.min(5.45, dragStartTarget - dx * 0.0042));
+        vel = vel * 0.65 + (e.clientX - lastX) * 0.35;
+        lastX = e.clientX;
+        lastInteract = performance.now();
+      } else {
+        tpx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        tpy = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+      }
+    });
+    function endDrag(e){
+      if(!dragging) return;
+      dragging = false;
+      lastInteract = performance.now();
+      if(moved < 7 && performance.now() - downT < 400){
+        var rect = el.getBoundingClientRect();
+        ndc.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        ndc.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        ray.setFromCamera(ndc, camera);
+        var hits = ray.intersectObjects(pickMeshes, false);
+        if(hits.length){ focusTarget = hits[0].object.userData.index; return; }
+      }
+      focusTarget = Math.max(0, Math.min(5, Math.round(focusTarget - vel * 0.055)));
+    }
+    el.addEventListener('pointerup', endDrag);
+    el.addEventListener('pointercancel', endDrag);
+    el.addEventListener('pointerleave', function(){ tpx = 0; tpy = 0; });
+    el.addEventListener('webglcontextlost', function(){
+      stageEl.classList.remove('webgl-on');
+      running = false;
+    });
+
+    window.HapsayStage = {
+      focus: function(i){ focusTarget = i; lastInteract = performance.now(); stageEl.classList.add('hint-off'); }
+    };
+    el.addEventListener('pointerdown', function(){ stageEl.classList.add('hint-off'); }, {once:true});
+
+    var running = true, inView = true;
+    if(window.IntersectionObserver){
+      new IntersectionObserver(function(en){ inView = en[0].isIntersecting; }, {threshold: 0.02}).observe(stageEl);
+    }
+    document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
+
+    var clock = new THREE.Clock();
+    var tAcc = 0;
+    function tick(){
+      requestAnimationFrame(tick);
+      if(!running || !inView) return;
+      var dt = Math.min(clock.getDelta(), 0.05);
+      tAcc += dt;
+      var t = tAcc;
+      focusCur += (focusTarget - focusCur) * (1 - Math.exp(-dt * 7.5));
+      var idleAmt = (!dragging && performance.now() - lastInteract > 2800) ? 1 : 0;
+      var sway = Math.sin(t * 0.55) * 0.13 * idleAmt;
+      var f = focusCur + sway;
+      px += (tpx - px) * 0.045;
+      py += (tpy - py) * 0.045;
+      group.rotation.y = px * 0.10 + Math.sin(t * 0.24) * 0.02;
+      group.rotation.x = -py * 0.045;
+      group.position.y = 0.22 + Math.sin(t * 0.8) * 0.045;
+      cards.forEach(function(card, i){
+        var d = ((i - f) % 6 + 9) % 6 - 3;
+        var theta = d * cfg.step;
+        card.group.position.set(
+          Math.sin(theta) * cfg.R,
+          Math.sin(t * 1.15 + card.phase) * 0.05,
+          Math.cos(theta) * cfg.R - cfg.R
+        );
+        card.group.rotation.y = theta;
+        card.group.rotation.x = Math.sin(t * 0.9 + card.phase) * 0.028;
+        var ad = Math.abs(d);
+        var s = 1.06 - Math.min(ad, 2.4) * 0.085;
+        card.group.scale.setScalar(s);
+        var op = Math.max(0.22, 1.12 - ad * 0.30);
+        card.mats.forEach(function(m){ m.opacity = op; });
+        var order = 20 - Math.round(ad * 3);
+        card.group.children.forEach(function(ch){ ch.renderOrder = order; });
+      });
+      star.rotation.z = Math.sin(t * 0.7) * 0.16;
+      star.position.y = starBase.y + Math.sin(t * 1.25) * 0.09;
+      pill.rotation.z = -0.05 + Math.sin(t * 0.6 + 2) * 0.03;
+      pill.position.y = pillBase.y + Math.sin(t * 1.05 + 1) * 0.08;
+      var r = Math.max(0, Math.min(5, Math.round(focusCur)));
+      if(r !== lastR){ lastR = r; if(window.HapsayUI){ window.HapsayUI.syncCaption(r); } }
+      renderer.render(scene, camera);
+    }
+    tick();
+  }
+
+  if(document.fonts && document.fonts.ready){
+    var started = false;
+    document.fonts.ready.then(function(){ if(!started){ started = true; init(); } });
+    setTimeout(function(){ if(!started){ started = true; init(); } }, 1400);
+  } else {
+    init();
+  }
 })();
 </script>
 </body>
