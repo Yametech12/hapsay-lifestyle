@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hapsay Lifestyle: Statement Tees, Worn Loud</title>
+<meta name="description" content="Hapsay Lifestyle is a Philippine streetwear label making oversized graphic tees with statement back prints. Shop the Frights & Finds pop-up collection and order on Messenger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23191612'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial Black, sans-serif' font-weight='900' fill='%23FAF5EC' text-anchor='middle'%3EH%3C/text%3E%3Ccircle cx='76' cy='26' r='9' fill='%23C8401F'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#FAF5EC;
+  --cream:#F1E7D3;
+  --card:#FFFDF7;
+  --ink:#191612;
+  --ink-2:#57503F;
+  --red:#C8401F;
+  --red-dark:#A33318;
+  --line:rgba(25,22,18,.16);
+  --radius:18px;
+  --font-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-display:"Anton",Impact,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+h1,h2,.display{font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:.98;letter-spacing:.01em}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.kicker::before{content:"";width:26px;height:2px;background:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);transition:transform .18s ease,background .18s ease,color .18s ease;cursor:pointer}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--red);border-color:var(--red);color:#FFF7EA}
+.btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:var(--red);border-color:var(--red)}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:6px}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(250,245,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
+.wordmark{font-family:var(--font-display);font-size:27px;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
+.wordmark i{font-style:normal;color:var(--red)}
+nav.main{display:none;gap:30px}
+nav.main a{text-decoration:none;font-weight:600;font-size:15px}
+nav.main a:hover{color:var(--red)}
+.header-cta{display:flex;align-items:center;gap:10px}
+.header-cta .btn{padding:10px 20px;font-size:14.5px}
+.burger{display:inline-flex;background:none;border:2px solid var(--ink);border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer}
+.burger svg{width:20px;height:20px}
+.mobile-nav{display:none;border-top:1px solid var(--line);padding:10px 0 16px}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:10px 0;font-weight:600;text-decoration:none;font-size:17px}
+@media(min-width:860px){nav.main{display:flex}.burger{display:none}.mobile-nav{display:none!important}}
+
+/* Hero */
+.hero{padding:128px 0 0;position:relative}
+.hero-grid{display:grid;gap:34px;align-items:end}
+.hero h1{font-size:clamp(64px,17.5vw,168px);color:var(--ink)}
+.hero h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+.hero h1 .rd{color:var(--red)}
+.hero-sub{max-width:52ch;color:var(--ink-2);font-size:18.5px;margin-top:18px}
+.hero-sub strong{color:var(--ink)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);aspect-ratio:4/4.6;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink)}
+.sticker{position:absolute;display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#FFF7EA;font-weight:700;font-size:13.5px;padding:9px 15px;border-radius:999px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.sticker.s1{top:16px;left:-8px;transform:rotate(-5deg)}
+.sticker.s2{bottom:20px;right:-6px;transform:rotate(3deg);background:var(--ink)}
+@media(min-width:920px){
+  .hero-grid{grid-template-columns:1.15fr .85fr;gap:48px}
+  .hero-photo img{aspect-ratio:4/4.9}
+}
+
+/* Marquee */
+.marquee{margin-top:56px;background:var(--ink);color:var(--paper);transform:rotate(-1.2deg) scale(1.02);overflow:hidden;padding:13px 0;border-block:2px solid var(--ink)}
+.marquee-track{display:flex;gap:0;width:max-content;animation:scroll 26s linear infinite;font-family:var(--font-display);text-transform:uppercase;font-size:19px;letter-spacing:.06em;white-space:nowrap}
+.marquee-track span{padding-right:14px}
+.marquee-track b{color:var(--red);font-weight:400}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Sections */
+section{padding:84px 0 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:14px;margin-bottom:30px}
+.sec-head h2{font-size:clamp(38px,7.5vw,62px)}
+.sec-head p{color:var(--ink-2);max-width:44ch}
+
+/* Product grid */
+.grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:6px 6px 0 rgba(25,22,18,.9);transition:transform .2s ease}
+.card:hover{transform:translateY(-4px)}
+.card figure{position:relative;background:var(--cream)}
+.card figure img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.tag{position:absolute;top:12px;left:12px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.tag.hot{background:var(--red);color:#FFF7EA}
+.card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card-body h3{font-family:var(--font-display);font-size:23px;text-transform:uppercase;letter-spacing:.02em}
+.print-line{font-size:14.5px;color:var(--ink-2);font-style:italic}
+.colors{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+.chip{font-size:12.5px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:3px 11px;background:var(--paper)}
+.card-body .btn{margin-top:auto;padding:12px 20px;font-size:14.5px}
+
+/* Statements */
+.statements{display:grid;gap:20px}
+@media(min-width:900px){.statements{grid-template-columns:1.05fr .95fr;align-items:stretch}}
+.statement{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px;border:2px solid var(--ink)}
+.statement .q{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,4.6vw,38px);line-height:1.12}
+.statement .q em{font-style:normal;color:var(--red)}
+.statement p{color:#CFC6B2;font-size:15.5px}
+.statement-img img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--red);min-height:280px}
+
+/* About */
+.about-grid{display:grid;gap:28px;align-items:center}
+@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
+.about-grid img{border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);width:100%;aspect-ratio:4/3;object-fit:cover}
+.about-copy p{color:var(--ink-2);margin-top:14px}
+.about-copy p strong{color:var(--ink)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.fact{border:2px solid var(--ink);border-radius:14px;padding:14px 16px;background:var(--card)}
+.fact b{display:block;font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:19px}
+.fact span{font-size:13.5px;color:var(--ink-2)}
+
+/* Steps */
+.steps{display:grid;gap:16px}
+@media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{border:2px solid var(--ink);border-radius:var(--radius);padding:24px 22px;background:var(--card)}
+.step .num{font-family:var(--font-display);font-size:40px;color:var(--red);line-height:1}
+.step h3{font-size:19px;margin:10px 0 6px}
+.step p{color:var(--ink-2);font-size:15.5px}
+
+/* Popup feature */
+.popup{background:var(--red);color:#FFF3E4;border-radius:calc(var(--radius) + 6px);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:38px 28px;position:relative;overflow:hidden}
+.popup h2{font-size:clamp(36px,8vw,58px)}
+.popup p{max-width:56ch;margin-top:12px;color:#FFE3D1}
+.popup .btn{margin-top:22px;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.popup .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.popup .big-star{position:absolute;right:-30px;top:-30px;width:190px;height:190px;opacity:.16;pointer-events:none}
+
+/* FAQ */
+.faq-list{display:grid;gap:12px;max-width:820px}
+details{border:2px solid var(--ink);border-radius:14px;background:var(--card);padding:0 20px}
+summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-display);font-size:22px;color:var(--red)}
+details[open ] summary::after{content:"-"}
+details p{padding:0 0 18px;color:var(--ink-2);font-size:15.5px}
+
+/* Contact */
+.contact-grid{display:grid;gap:26px}
+@media(min-width:920px){.contact-grid{grid-template-columns:.9fr 1.1fr}}
+.contact-card{border:2px solid var(--ink);border-radius:var(--radius);background:var(--card);padding:28px 24px;box-shadow:6px 6px 0 rgba(25,22,18,.9)}
+.contact-card h3{font-family:var(--font-display);text-transform:uppercase;font-size:24px;margin-bottom:8px}
+.contact-card p{color:var(--ink-2);font-size:15.5px}
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:14.5px;display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none}
+.form-note{font-size:13.5px;color:var(--ink-2)}
+.direct-links{display:grid;gap:12px;margin-top:20px}
+.direct-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;border:2px solid var(--ink);border-radius:14px;padding:15px 18px;text-decoration:none;font-weight:700;background:var(--paper)}
+.direct-links a:hover{background:var(--cream)}
+.direct-links small{display:block;font-weight:500;color:var(--ink-2)}
+
+/* Footer */
+footer{margin-top:90px;background:var(--ink);color:var(--paper);padding:52px 0 34px}
+.foot-word{font-family:var(--font-display);font-size:clamp(52px,13vw,110px);text-transform:uppercase;line-height:1;color:var(--paper)}
+.foot-word i{font-style:normal;color:var(--red)}
+.foot-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;margin-top:22px;border-top:1px solid rgba(250,245,236,.2);padding-top:22px}
+.foot-grid nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot-grid a{text-decoration:none;font-weight:600;font-size:15px}
+.foot-grid a:hover{color:var(--red)}
+.credit{margin-top:20px;font-size:13.5px;color:#B7AE99}
+.credit a{color:var(--paper)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .marquee-track{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .card,.btn{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-in">
+    <a class="wordmark" href="#top" aria-label="Hapsay Lifestyle home">Hapsay<i>*</i></a>
+    <nav class="main" aria-label="Main">
+      <a href="#drop">The Drop</a>
+      <a href="#about">About</a>
+      <a href="#order">How to Order</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-red" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order on Messenger</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="wrap mobile-nav" id="mobileNav">
+    <a href="#drop">The Drop</a>
+    <a href="#about">About</a>
+    <a href="#order">How to Order</a>
+    <a href="#popup">Pop-ups</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Philippine streetwear label</span>
+        <h1>Wear it<br><span class="out">loud,</span><br>live it <span class="rd">hapsay.</span></h1>
+        <p class="hero-sub">Oversized graphic tees with <strong>statement back prints</strong>, made for peace, growth, and good energy. Designed in the Philippines, dropped in limited runs and pop-ups, and ordered the easy way: <strong>one message on Messenger</strong>.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="#drop">Shop the drop</a>
+          <a class="btn btn-ghost" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Message to order</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/hero.webp" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" fetchpriority="high">
+        <span class="sticker s1">Frights &amp; Finds pop-up collection</span>
+        <span class="sticker s2">Free stickers with every order</span>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Chasing your dreams <b>*</b>&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE DROP -->
+  <section id="drop">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="kicker">Latest collection</span>
+          <h2>Frights &amp; Finds</h2>
+        </div>
+        <p>The Halloween pop-up collection, now open for Messenger orders. Six tees, small runs, sizes Small to XL. Prices are confirmed on Messenger, just ask.</p>
+      </div>
+      <div class="grid">
+
+        <article class="card reveal">
+          <figure>
+            <img src="img/tee-vision.webp" alt="Hapsay Vision tee in black with star and eye back print" loading="lazy">
+            <span class="tag hot">Best seller energy</span>
+          </figure>
+          <div class="card-body">
+            <h3>Vision Tee</h3>
+            <p class="print-line">"Everyone has the same eyes, but not the same vision." Star and eye back print.</p>
+            <div class="colors"><span class="chip">Black</span><span class="chip">Dark gray</span><span class="chip">S to XL</span></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <figure>
+            <img src="img/tee-energy.webp" alt="Hapsay Energy tee in white with bold back print" loading="lazy">
+            <span class="tag">Statement back</span>
+          </figure>
+          <div class="card-body">
+            <h3>Energy Tee</h3>
+            <p class="print-line">"I only want peace, growth, money and good energy around me."</p>
+            <div class="colors"><span class="chip">Black</span><span class="chip">White</span><span class="chip">S to XL</span></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <figure>
+            <img src="img/tee-sk8.webp" alt="Hapsay SK8 tee in white with cartoon skater back print" loading="lazy">
+            <span class="tag">Skate series</span>
+          </figure>
+          <div class="card-body">
+            <h3>SK8 Tee</h3>
+            <p class="print-line">Small chest logo up front, cartoon skater holding a sign on the back.</p>
+            <div class="colors"><span class="chip">White</span><span class="chip">S to XL</span></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <figure>
+            <img src="img/tee-made.webp" alt="Hapsay Made tee in red with heart script logo" loading="lazy">
+            <span class="tag">New colorway</span>
+          </figure>
+          <div class="card-body">
+            <h3>Made Tee</h3>
+            <p class="print-line">The heart-shaped Hapsay script logo, front and center on red.</p>
+            <div class="colors"><span class="chip">Red</span><span class="chip">S to XL</span></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <figure>
+            <img src="img/tee-outside.webp" alt="Get Outside tee in cream with character back graphic" loading="lazy">
+            <span class="tag hot">Pop-up pick</span>
+          </figure>
+          <div class="card-body">
+            <h3>Get Outside Tee</h3>
+            <p class="print-line">"Get out of your phone." A character jumps out of the screen on the back.</p>
+            <div class="colors"><span class="chip">Cream</span><span class="chip">S to XL</span></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <figure>
+            <img src="img/tee-lifestyle.webp" alt="Lifestyle tee in black with cursive back wordmark" loading="lazy">
+            <span class="tag">Core piece</span>
+          </figure>
+          <div class="card-body">
+            <h3>Lifestyle Tee</h3>
+            <p class="print-line">Script Hapsay on the chest, big cursive Lifestyle across the back.</p>
+            <div class="colors"><span class="chip">Black</span><span class="chip">S to XL</span></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENTS -->
+  <section id="statements">
+    <div class="wrap statements">
+      <div class="statement reveal">
+        <span class="kicker" style="color:#FF8A66">The Hapsay mindset</span>
+        <p class="q">"Remember, everyone has the same eyes, but <em>not the same vision.</em>"</p>
+        <p>Every Hapsay tee carries its message on the back, so the statement walks in after you do. The Vision and Energy prints started as pop-up favorites and became the label's signature.</p>
+        <p class="q" style="font-size:clamp(20px,3.4vw,27px)">"Peace, growth, money and <em>good energy</em> only."</p>
+      </div>
+      <div class="statement-img reveal">
+        <img src="img/surf-shop.webp" alt="Inside a tropical surf lifestyle shop with racks of graphic tees and surfboards" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="kicker">About the label</span>
+          <h2>Rooted in the surf and skate life</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <img src="img/beach-crew.webp" alt="Friends in oversized tees walking toward surfboards on a Philippine beach" loading="lazy">
+        </div>
+        <div class="about-copy reveal">
+          <p><strong>Hapsay Lifestyle</strong> is a Philippine clothing label built around one idea: what you wear should say something. Its oversized tees pair clean fronts with loud, thoughtful back prints, from the star-and-eye Vision graphic to reminders to get off your phone and chase your dreams.</p>
+          <p>The label sells the grassroots way: drops announced on Facebook, pop-up booths like <strong>Frights &amp; Finds</strong>, and orders packed and shipped by the team to a growing community of wearers in <strong>Cebu, Davao</strong>, and beyond.</p>
+          <div class="facts">
+            <div class="fact"><b>S to XL</b><span>Oversized fits, unisex styling</span></div>
+            <div class="fact"><b>Free stickers</b><span>Included with every order</span></div>
+            <div class="fact"><b>Pop-up drops</b><span>Limited runs, announced on the Page</span></div>
+            <div class="fact"><b>Ships to you</b><span>Orders packed and shipped nationwide</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section id="order">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="kicker">No cart, no fuss</span>
+          <h2>How to order</h2>
+        </div>
+        <p>Hapsay takes orders on Messenger, the same way its community already shops. Three steps and your tee is on its way.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <h3>Pick your tee</h3>
+          <p>Choose a design and colorway from The Drop above, and your size from Small to XL. Oversized fit, so size down if you want it closer.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <h3>Message the Page</h3>
+          <p>Tap any Order button to open Messenger. Send the tee name, color, and size. The team confirms the price and availability with you there.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <h3>Pay, then it ships</h3>
+          <p>Orders are payment first, then packed and shipped to your door. Free Hapsay stickers ride along with every order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP -->
+  <section id="popup">
+    <div class="wrap">
+      <div class="popup reveal">
+        <svg class="big-star" viewBox="0 0 100 100" fill="#FFF3E4" aria-hidden="true"><path d="M50 2 L61 38 L98 38 L68 59 L79 95 L50 73 L21 95 L32 59 L2 38 L39 38 Z"/></svg>
+        <span class="kicker" style="color:#FFE3D1">Pop-ups</span>
+        <h2>Frights &amp; Finds, the Halloween drop</h2>
+        <p>The latest collection first landed at the Frights &amp; Finds pop-up, spiderwebs and all. Missed the booth? The same tees are open for Messenger orders while stocks last, and the next pop-up gets announced on the Facebook Page first.</p>
+        <a class="btn" href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Follow the Page for the next pop-up</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="kicker">Good to know</span>
+          <h2>Questions</h2>
+        </div>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>How much are the tees?</summary>
+          <p>Prices are confirmed on Messenger when you order, since drops and pop-up stocks change. Send the tee name and size and the team will quote you right away.</p>
+        </details>
+        <details>
+          <summary>What sizes are available?</summary>
+          <p>Tees come in Small to XL with an oversized, unisex fit. If you are between sizes or want a closer fit, ask on Messenger and the team will help you pick.</p>
+        </details>
+        <details>
+          <summary>How do I pay?</summary>
+          <p>Orders are payment first, confirmed on Messenger, before your order is packed and shipped. The team will walk you through the payment options in chat.</p>
+        </details>
+        <details>
+          <summary>Do you ship outside your city?</summary>
+          <p>Yes. Orders are packed and shipped to customers around the Philippines, including the brand's community in Cebu and Davao.</p>
+        </details>
+        <details>
+          <summary>What comes with my order?</summary>
+          <p>Your tee, plus free Hapsay stickers with every order. Pop-up collections are limited runs, so once a design sells out it may not come back.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="kicker">Talk to Hapsay</span>
+          <h2>Start your order</h2>
+        </div>
+        <p>Fill this in and we will hand you to Messenger with your order ready to send. Or skip the form and message the Page directly.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <h3>Quick inquiry</h3>
+          <p>Tell us what you are eyeing. The button below opens Messenger with your message composed, nothing is sent until you tap send there.</p>
+          <div class="direct-links">
+            <a href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">
+              <span>Messenger<small>Fastest reply, order here</small></span><span aria-hidden="true">-&gt;</span>
+            </a>
+            <a href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">
+              <span>Facebook Page<small>Drops, pop-ups, and new releases</small></span><span aria-hidden="true">-&gt;</span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <form id="inquiryForm">
+            <label>Your name
+              <input type="text" id="fName" name="name" placeholder="Juan Dela Cruz" autocomplete="name" required>
+            </label>
+            <label>Tee you want
+              <select id="fTee" name="tee">
+                <option>Vision Tee</option>
+                <option>Energy Tee</option>
+                <option>SK8 Tee</option>
+                <option>Made Tee</option>
+                <option>Get Outside Tee</option>
+                <option>Lifestyle Tee</option>
+                <option>Something else / not sure yet</option>
+              </select>
+            </label>
+            <label>Size
+              <select id="fSize" name="size">
+                <option>Small</option>
+                <option>Medium</option>
+                <option selected>Large</option>
+                <option>XL</option>
+                <option>Help me choose</option>
+              </select>
+            </label>
+            <label>Message
+              <textarea id="fMsg" name="message" rows="3" placeholder="Color preference, questions, anything else"></textarea>
+            </label>
+            <button class="btn btn-red" type="submit">Continue to Messenger</button>
+            <p class="form-note">This form does not collect or store anything. It opens Messenger with your inquiry pre-written.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-word">Hapsay<i>*</i></div>
+    <div class="foot-grid">
+      <nav aria-label="Footer">
+        <a href="#drop">The Drop</a>
+        <a href="#about">About</a>
+        <a href="#order">How to Order</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <nav aria-label="Social">
+        <a href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Messenger</a>
+      </nav>
+    </div>
+    <p class="credit">Hapsay Lifestyle. Statement tees from the Philippines.<br>Made by Mohammad Sidique Ibrahim</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Mobile nav
+  var burger = document.getElementById('burger');
+  var mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // Duplicate marquee content for a seamless loop
+  var track = document.getElementById('marqueeTrack');
+  track.innerHTML += track.innerHTML;
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Inquiry form -> Messenger with a composed message
+  document.getElementById('inquiryForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var name = document.getElementById('fName').value.trim();
+    var tee = document.getElementById('fTee').value;
+    var size = document.getElementById('fSize').value;
+    var msg = document.getElementById('fMsg').value.trim();
+    var text = 'Hi Hapsay! I am ' + name + '. I want to order the ' + tee + ', size ' + size + '.';
+    if(msg){ text += ' ' + msg; }
+    text += ' Is it available?';
+    var url = 'https://m.me/HapsayLifestyle?text=' + encodeURIComponent(text);
+    window.open(url, '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
