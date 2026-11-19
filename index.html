@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <title>Hapsay Lifestyle: Statement Tees, Worn Loud</title>
 <meta name="description" content="Hapsay Lifestyle is a Philippine streetwear label making oversized graphic tees with statement back prints. Shop the Frights & Finds pop-up collection and order on Messenger.">
 <meta name="theme-color" content="#FAF5EC">
@@ -14,6 +15,8 @@
 <meta property="og:image" content="https://hapsay-lifestyle.vercel.app/img/packing.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23191612'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial Black, sans-serif' font-weight='900' fill='%23FAF5EC' text-anchor='middle'%3EH%3C/text%3E%3Ccircle cx='76' cy='26' r='9' fill='%23C8401F'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/instrumentsans-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');</script>
@@ -40,6 +43,7 @@
   --ease-snap:cubic-bezier(.34,1.4,.44,1);
   --ease-inout:cubic-bezier(.65,0,.35,1);
   --ease-linear:cubic-bezier(0,0,1,1);
+  color-scheme:light;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip;-webkit-tap-highlight-color:rgba(200,64,31,.18)}
@@ -66,7 +70,7 @@ h1,h2,.display{font-family:var(--font-display);font-weight:400;text-transform:up
 :focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:6px}
 
 /* Header */
-header{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(250,245,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .35s var(--ease-inout),box-shadow .35s var(--ease-out)}
+header{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(250,245,236,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .35s var(--ease-inout),box-shadow .35s var(--ease-out)}
 header.scrolled{box-shadow:0 10px 34px rgba(25,22,18,.10)}
 header.hidden{transform:translateY(-100%)}
 .header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;padding-top:calc(13px + env(safe-area-inset-top))}
@@ -91,8 +95,11 @@ nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
 /* Hero */
 .hero{padding:118px 0 0;position:relative;overflow:clip}
 @media(max-width:899px){.hero-ghost{display:none}.hero{padding-top:104px}.hero-grid{gap:16px}.stage-wrap{margin-top:8px}}
+@media(max-width:359px){.hero .kicker{font-size:11px;letter-spacing:.17em;gap:8px}.hero .kicker::before{width:20px}}
+@media(max-width:319px){.wrap{width:calc(100% - 28px)}.header-in{gap:10px}.wordmark{font-size:22px}.header-cta{gap:8px}.header-cta .btn{padding:9px 13px;font-size:13.5px}}
 .hero-ghost{position:absolute;top:150px;left:50%;transform:translateX(-50%) rotate(-4deg);font-family:var(--font-display);font-size:clamp(110px,20vw,260px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(25,22,18,.055);letter-spacing:.02em;white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
-.hero-grid{position:relative;z-index:2;display:grid;gap:30px}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+.hero-grid>*{min-width:0}
 .hero h1{font-size:clamp(58px,15.5vw,120px);color:var(--ink);margin-top:16px;letter-spacing:-.005em;line-height:.94}
 .hero h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
 .hero h1 .rd{color:var(--red)}
@@ -106,7 +113,7 @@ nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
 .hero-sub strong{color:var(--ink)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 @media(min-width:1020px){
-  .hero-grid{grid-template-columns:1fr;grid-template-areas:"top" "stage" "bottom";row-gap:34px}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "stage" "bottom";row-gap:34px}
   .hero-top{grid-area:top}
   .hero-stage-col{grid-area:stage}
   .hero-bottom{grid-area:bottom;display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
@@ -141,8 +148,9 @@ nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
 .stage-cap .colors{margin-top:9px}
 .stage-cap.swap{animation:capIn .45s var(--ease-out)}
 @keyframes capIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.stage-nav{display:flex;align-items:center;gap:6px}
-.stage-btn{width:50px;height:50px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-size:19px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .2s var(--ease-out),color .2s var(--ease-out),transform .15s var(--ease-snap)}
+.stage-nav{display:flex;align-items:center;gap:6px;min-width:0}
+.stage-dots{min-width:0}
+.stage-btn{flex:0 0 auto;width:50px;height:50px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-size:19px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .2s var(--ease-out),color .2s var(--ease-out),transform .15s var(--ease-snap)}
 .stage-btn:hover{background:var(--ink);color:var(--paper)}
 .stage-btn:active{transform:scale(.93)}
 .stage-dots{display:flex;gap:2px;align-items:center}
@@ -150,7 +158,7 @@ nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
 .stage-dots button i{display:block;width:9px;height:9px;border-radius:99px;border:2px solid var(--ink);background:transparent;transition:width .3s var(--ease-out),background-color .3s var(--ease-out),border-color .3s var(--ease-out)}
 .stage-dots button.active i{width:26px;background:var(--red);border-color:var(--red)}
 .stage-order{margin-left:auto}
-@media(max-width:640px){.stage-order{margin-left:0;width:100%}.stage-order .btn{width:100%}}
+@media(max-width:640px){.stage-order{margin-left:0;width:100%}.stage-order .btn{width:100%}.stage-nav{flex:1 1 100%;justify-content:space-between}.stage-dots{flex-wrap:wrap;justify-content:center;row-gap:4px}}
 @media(min-width:1020px){.stage{height:620px}}
 
 
@@ -872,21 +880,31 @@ html.js .reveal.in{opacity:1;transform:none}
     counters[key] = (counters[key] || 0) + 1;
     el.style.setProperty('--d', Math.min((counters[key] - 1) * 0.08, 0.4) + 's');
   });
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold: .12});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  setTimeout(function(){
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+  function revealSweep(){
     document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
       var r = el.getBoundingClientRect();
       if(r.top < window.innerHeight * 1.5){ el.classList.add('in'); }
     });
-  }, 2600);
+  }
+  setTimeout(revealSweep, 2600);
+  var revealScrollTimer = null;
+  window.addEventListener('scroll', function(){
+    if(revealScrollTimer){ return; }
+    revealScrollTimer = setTimeout(function(){ revealScrollTimer = null; revealSweep(); }, 250);
+  }, {passive: true});
 
   // Stage caption, dots, fallback image and order link sync
   var cap = document.getElementById('stageCap');
@@ -995,12 +1013,23 @@ html.js .reveal.in{opacity:1;transform:none}
         populateColors();
         document.getElementById('contact').scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth'});
         var card = document.getElementById('formCard');
-        setTimeout(function(){
+        var pulsed = false;
+        function pulseCard(){
+          if(pulsed){ return; }
+          pulsed = true;
           card.classList.remove('pulse');
           void card.offsetWidth;
           card.classList.add('pulse');
           document.getElementById('fName').focus({preventScroll:true});
-        }, reducedMotion ? 60 : 650);
+        }
+        if(reducedMotion){ setTimeout(pulseCard, 60); }
+        else if('IntersectionObserver' in window){
+          var po = new IntersectionObserver(function(en){
+            if(en[0].isIntersecting){ po.disconnect(); pulseCard(); }
+          }, {threshold: .2});
+          po.observe(card);
+          setTimeout(function(){ po.disconnect(); pulseCard(); }, 2600);
+        } else { setTimeout(pulseCard, 650); }
       });
     });
   }
@@ -1105,7 +1134,14 @@ html.js .reveal.in{opacity:1;transform:none}
       threeStarted = true;
       var s = document.createElement('script');
       s.src = 'vendor/three.min.js';
-      s.onload = function(){ if(window.HapsayStageInit){ window.HapsayStageInit(); } };
+      s.onload = function(){
+        var waitTries = 0;
+        var waitInit = setInterval(function(){
+          waitTries++;
+          if(window.HapsayStageInit){ clearInterval(waitInit); window.HapsayStageInit(); }
+          else if(waitTries > 40){ clearInterval(waitInit); }
+        }, 100);
+      };
       document.body.appendChild(s);
     };
     if('IntersectionObserver' in window){
@@ -1209,7 +1245,7 @@ window.HapsayStageInit = function(){
     var renderer;
     try{
       renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-    }catch(e){ return; }
+    }catch(e){ throw e; }
     renderer.setClearColor(0x000000, 0);
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -1238,7 +1274,15 @@ window.HapsayStageInit = function(){
 
     var W = 2.2, H = 2.75;
     var geo = new THREE.PlaneGeometry(W, H);
-    var loader = new THREE.TextureLoader();
+    var stageFlipped = false;
+    function flipStage(){
+      if(stageFlipped){ return; }
+      stageFlipped = true;
+      stageEl.classList.add('webgl-on');
+    }
+    var texManager = new THREE.LoadingManager();
+    texManager.onLoad = flipStage;
+    var loader = new THREE.TextureLoader(texManager);
     var cards = [], pickMeshes = [];
     TEES.forEach(function(tee, i){
       var g = new THREE.Group();
@@ -1298,7 +1342,10 @@ window.HapsayStageInit = function(){
     if(window.ResizeObserver){ new ResizeObserver(fit).observe(stageEl); }
     window.addEventListener('resize', fit);
 
-    stageEl.classList.add('webgl-on');
+    // The fallback photo stays visible until every card texture has settled
+    // (texManager.onLoad), so a slow connection never sees an empty stage.
+    // The timer is a safety net: one hung texture cannot trap the fallback.
+    setTimeout(flipStage, 6000);
 
     var startIdx = (window.HapsayUI && window.HapsayUI.getIndex) ? window.HapsayUI.getIndex() : 0;
     var focusTarget = startIdx, focusCur = startIdx, lastR = startIdx;
@@ -1409,12 +1456,21 @@ window.HapsayStageInit = function(){
     tick();
   }
 
+  var started = false, attempts = 0;
+  function attempt(){
+    if(started){ return; }
+    try{ init(); started = true; }
+    catch(e){
+      if(stageEl.querySelector('canvas')){ started = true; return; }
+      attempts++;
+      if(attempts < 8){ setTimeout(attempt, 900); }
+    }
+  }
   if(document.fonts && document.fonts.ready){
-    var started = false;
-    document.fonts.ready.then(function(){ if(!started){ started = true; init(); } });
-    setTimeout(function(){ if(!started){ started = true; init(); } }, 1400);
+    document.fonts.ready.then(attempt);
+    setTimeout(attempt, 1400);
   } else {
-    init();
+    attempt();
   }
 };
 </script>
