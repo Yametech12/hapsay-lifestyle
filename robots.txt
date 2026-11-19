@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hapsay-lifestyle.vercel.app/sitemap.xml

@@ -5,7 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hapsay Lifestyle: Statement Tees, Worn Loud</title>
 <meta name="description" content="Hapsay Lifestyle is a Philippine streetwear label making oversized graphic tees with statement back prints. Shop the Frights & Finds pop-up collection and order on Messenger.">
+<meta name="theme-color" content="#FAF5EC">
+<link rel="canonical" href="https://hapsay-lifestyle.vercel.app/">
+<meta property="og:title" content="Hapsay Lifestyle: Statement Tees, Worn Loud">
+<meta property="og:description" content="Oversized graphic tees with statement back prints. Shop the Frights & Finds pop-up collection and order on Messenger.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hapsay-lifestyle.vercel.app/">
+<meta property="og:image" content="https://hapsay-lifestyle.vercel.app/img/packing.webp">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23191612'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial Black, sans-serif' font-weight='900' fill='%23FAF5EC' text-anchor='middle'%3EH%3C/text%3E%3Ccircle cx='76' cy='26' r='9' fill='%23C8401F'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrumentsans-400.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js');</script>
 <style>
 @font-face{font-family:"Anton";src:url("fonts/anton-400.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Instrument Sans";src:url("fonts/instrumentsans-400.woff2") format("woff2");font-weight:400;font-display:swap}
@@ -27,24 +38,24 @@
   --font-display:"Anton",Impact,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip}
+html{scroll-behavior:smooth;overflow-x:clip;-webkit-tap-highlight-color:rgba(200,64,31,.18)}
 body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::after{content:"";position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
 ::selection{background:var(--red);color:#FFF7EA}
 img{max-width:100%;display:block}
 a{color:inherit}
+a,button,summary,input,select,textarea,label{touch-action:manipulation}
 .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+section[id],#top{scroll-margin-top:84px}
 h1,h2,.display{font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:.98;letter-spacing:.01em}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
 .kicker::before{content:"";width:26px;height:2px;background:var(--red)}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;cursor:pointer}
-.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.38) 50%,transparent 58%);transform:translateX(-130%);transition:transform .65s ease;pointer-events:none}
-.btn:hover::after{transform:translateX(130%)}
+.skip{position:absolute;left:16px;top:-60px;z-index:200;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:10px;font-weight:700;text-decoration:none;transition:top .2s ease}
+.skip:focus{top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);transition:transform .18s ease,background-color .18s ease,color .18s ease,border-color .18s ease;cursor:pointer}
 .btn:active{transform:scale(.97)}
 .btn-red{background:var(--red);border-color:var(--red);color:#FFF7EA}
 .btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
 .btn-ghost{background:transparent;color:var(--ink)}
-.btn-ghost::after{background:linear-gradient(105deg,transparent 42%,rgba(25,22,18,.14) 50%,transparent 58%)}
 .btn-ghost:hover{background:var(--ink);color:var(--paper)}
 .btn-ink{background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:var(--red);border-color:var(--red)}
@@ -54,75 +65,83 @@ h1,h2,.display{font-family:var(--font-display);font-weight:400;text-transform:up
 header{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(250,245,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .35s ease,box-shadow .35s ease}
 header.scrolled{box-shadow:0 10px 34px rgba(25,22,18,.10)}
 header.hidden{transform:translateY(-100%)}
-.header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;padding-top:calc(13px + env(safe-area-inset-top))}
 .wordmark{font-family:var(--font-display);font-size:27px;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
 .wordmark i{font-style:normal;color:var(--red)}
-nav.main{display:none;gap:30px}
+nav.main{display:none;gap:26px}
 nav.main a{position:relative;text-decoration:none;font-weight:600;font-size:15px;padding:2px 0}
 nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;height:2.5px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .3s ease}
 nav.main a:hover{color:var(--red)}
 nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
 .header-cta{display:flex;align-items:center;gap:10px}
-.header-cta .btn{padding:10px 20px;font-size:14.5px}
+.header-cta .btn{padding:10px 20px;font-size:14.5px;white-space:nowrap}
+.cta-short{display:none}
+@media(max-width:560px){.cta-full{display:none}.cta-short{display:inline}}
 .burger{display:inline-flex;background:none;border:2px solid var(--ink);border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer}
 .burger svg{width:20px;height:20px}
 .mobile-nav{display:none;border-top:1px solid var(--line);padding:10px 0 16px}
 .mobile-nav.open{display:block}
 .mobile-nav a{display:block;padding:10px 0;font-weight:600;text-decoration:none;font-size:17px}
-@media(min-width:860px){nav.main{display:flex}.burger{display:none}.mobile-nav{display:none!important}}
+@media(min-width:900px){nav.main{display:flex}.burger{display:none}.mobile-nav{display:none!important}}
 
 /* Hero */
 .hero{padding:118px 0 0;position:relative;overflow:clip}
-.hero-ghost{position:absolute;top:216px;left:50%;transform:translateX(-50%) rotate(-4deg) translateY(var(--py,0px));font-family:var(--font-display);font-size:clamp(110px,20vw,260px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(25,22,18,.07);letter-spacing:.02em;white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
-.hero-top{position:relative;z-index:3;text-align:left}
-.hero h1{font-size:clamp(60px,15.5vw,148px);color:var(--ink)}
+.hero-ghost{position:absolute;top:200px;left:50%;transform:translateX(-50%) rotate(-4deg);font-family:var(--font-display);font-size:clamp(110px,20vw,260px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(25,22,18,.07);letter-spacing:.02em;white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.hero-grid{position:relative;z-index:2;display:grid;gap:30px}
+.hero h1{font-size:clamp(54px,14.5vw,118px);color:var(--ink);margin-top:14px}
 .hero h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
 .hero h1 .rd{color:var(--red)}
 .hero h1 .line{display:block;overflow:hidden}
 .hero h1 .line>span{display:block;transform:translateY(110%);animation:riseIn .9s cubic-bezier(.19,1,.22,1) forwards}
-.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
-.hero-line3{position:relative;z-index:3;margin-top:clamp(-56px,-5vw,-22px);pointer-events:none}
-.hero-line3 .line{display:block;overflow:hidden}
-.hero-line3 .line>span{display:block;transform:translateY(110%);animation:riseIn .9s cubic-bezier(.19,1,.22,1) .55s forwards}
-.hero-line3 h2{font-size:clamp(60px,15.5vw,148px)}
+.hero h1 .line:nth-child(2)>span{animation-delay:.1s}
+.hero h1 .line:nth-child(3)>span{animation-delay:.2s}
+.hero h1 .line:nth-child(4)>span{animation-delay:.3s}
 @keyframes riseIn{to{transform:translateY(0)}}
-.hero-sub{max-width:56ch;color:var(--ink-2);font-size:18.5px;margin-top:20px;position:relative;z-index:3}
+.hero-sub{max-width:56ch;color:var(--ink-2);font-size:18.5px}
 .hero-sub strong{color:var(--ink)}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;position:relative;z-index:3}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+@media(min-width:1020px){
+  .hero-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"top stage" "bottom stage";column-gap:52px;row-gap:26px;align-items:start}
+  .hero-top{grid-area:top}
+  .hero-stage-col{grid-area:stage}
+  .hero-bottom{grid-area:bottom;align-self:end}
+  .hero h1{font-size:clamp(62px,5.9vw,86px)}
+}
 
 /* 3D stage */
-.stage-wrap{position:relative;z-index:2;margin-top:clamp(6px,2vw,18px)}
+.stage-wrap{position:relative}
 .stage{position:relative;height:clamp(380px,100vw,540px);border-radius:calc(var(--radius) + 8px);background:radial-gradient(90% 60% at 18% 0%,rgba(200,64,31,.34) 0%,transparent 55%),radial-gradient(80% 55% at 85% 100%,rgba(200,64,31,.22) 0%,transparent 55%),radial-gradient(130% 100% at 50% 0%,#2B251C 0%,#1B1712 56%,#110E0B 100%);border:2px solid var(--ink);box-shadow:12px 12px 0 var(--red);overflow:hidden}
 .stage canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
 .stage canvas:active{cursor:grabbing}
 .stage-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:22px}
-.stage-fallback img{height:100%;max-height:100%;width:auto;max-width:100%;object-fit:cover;border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.stage-fallback img{height:100%;max-height:100%;width:auto;max-width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
 .stage.webgl-on .stage-fallback{display:none}
-.stage-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--red);color:#FFF7EA;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .5s ease;white-space:nowrap}
+.stage-hint{position:absolute;right:14px;top:14px;background:var(--red);color:#FFF7EA;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .5s ease;white-space:nowrap;z-index:4}
 .stage.webgl-on .stage-hint{opacity:1}
 .stage.webgl-on.hint-off .stage-hint{opacity:0}
 .sticker{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#FFF7EA;font-weight:700;font-size:13.5px;padding:9px 15px;border-radius:999px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);animation:bob 5s ease-in-out infinite}
-.sticker.s1{top:18px;left:10px;transform:rotate(-5deg)}
+.sticker.s1{top:-14px;left:8px;transform:rotate(-5deg)}
 .sticker.s2{bottom:20px;right:10px;background:var(--ink);animation-delay:-2.4s}
+@media(max-width:640px){.sticker.s1{top:-38px}}
 @keyframes bob{0%,100%{margin-top:0}50%{margin-top:-8px}}
 .stage-ui{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px}
 .stage-cap{flex:1 1 260px;min-width:min(260px,100%)}
-.stage-cap h3{font-family:var(--font-display);font-size:clamp(26px,5.4vw,36px);text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+.cap-name{font-family:var(--font-display);font-size:clamp(26px,5.4vw,36px);text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
 .stage-cap .print-line{margin-top:5px}
 .stage-cap .colors{margin-top:9px}
 .stage-cap.swap{animation:capIn .45s ease}
 @keyframes capIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.stage-nav{display:flex;align-items:center;gap:12px}
-.stage-btn{width:50px;height:50px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-size:19px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease,color .2s ease,transform .15s ease}
+.stage-nav{display:flex;align-items:center;gap:6px}
+.stage-btn{width:50px;height:50px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-size:19px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .2s ease,color .2s ease,transform .15s ease}
 .stage-btn:hover{background:var(--ink);color:var(--paper)}
 .stage-btn:active{transform:scale(.93)}
-.stage-btn:disabled{opacity:.32;pointer-events:none}
-.stage-dots{display:flex;gap:7px;align-items:center}
-.stage-dots button{width:9px;height:9px;border-radius:99px;border:2px solid var(--ink);background:transparent;padding:0;cursor:pointer;transition:all .3s ease}
-.stage-dots button.active{width:26px;background:var(--red);border-color:var(--red)}
+.stage-dots{display:flex;gap:2px;align-items:center}
+.stage-dots button{width:44px;height:44px;border:none;background:transparent;padding:0;cursor:pointer;display:grid;place-items:center}
+.stage-dots button i{display:block;width:9px;height:9px;border-radius:99px;border:2px solid var(--ink);background:transparent;transition:width .3s ease,background-color .3s ease,border-color .3s ease}
+.stage-dots button.active i{width:26px;background:var(--red);border-color:var(--red)}
 .stage-order{margin-left:auto}
 @media(max-width:640px){.stage-order{margin-left:0;width:100%}.stage-order .btn{width:100%}}
-@media(min-width:920px){.stage{height:560px}}
+@media(min-width:1020px){.stage{height:560px}}
 
 /* Marquee */
 .marquee-band{position:relative;margin-top:64px;padding:16px 0 8px}
@@ -142,73 +161,65 @@ section{padding:88px 0 0;position:relative}
 .sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:14px;margin-bottom:30px;position:relative;z-index:2}
 .sec-head h2{font-size:clamp(38px,7.5vw,62px)}
 .sec-head p{color:var(--ink-2);max-width:44ch}
-.ghost{position:absolute;top:26px;right:-6px;transform:translateY(var(--py,0px));font-family:var(--font-display);font-size:clamp(84px,15vw,190px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(25,22,18,.08);text-transform:uppercase;white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
 
 /* Product grid */
 .grid{display:grid;gap:20px;grid-template-columns:1fr;position:relative;z-index:2}
 @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.grid{grid-template-columns:1fr 1fr 1fr}}
-.card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:6px 6px 0 rgba(25,22,18,.9);transform-style:preserve-3d}
-.card.tilt-ready{transition:transform .18s ease-out,box-shadow .3s ease}
-.card.tilt-ready:hover{box-shadow:14px 18px 0 rgba(25,22,18,.85)}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:6px 6px 0 rgba(25,22,18,.9)}
 .card figure{position:relative;background:var(--cream);overflow:hidden}
 .card figure img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .8s cubic-bezier(.19,1,.22,1)}
-.card:hover figure img{transform:scale(1.06)}
-.card figure::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.34),transparent 45%);opacity:0;transition:opacity .3s ease;pointer-events:none}
-.card:hover figure::after{opacity:1}
+.card:hover figure img{transform:scale(1.05)}
 .tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.tag.hot{background:var(--red);color:#FFF7EA}
 .card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
 .card-body h3{font-family:var(--font-display);font-size:23px;text-transform:uppercase;letter-spacing:.02em}
 .print-line{font-size:14.5px;color:var(--ink-2);font-style:italic}
-.colors{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
-.chip{font-size:12.5px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:3px 11px;background:var(--paper)}
-button.chip{font-family:inherit;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.colors{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px;align-items:center}
+.chip{font-size:12.5px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:3px 11px;background:var(--paper);display:inline-flex;align-items:center}
+button.chip{font-family:inherit;cursor:pointer;min-height:44px;padding:3px 15px;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
 button.chip:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .card-body .btn{margin-top:auto;padding:12px 20px;font-size:14.5px}
 
 /* Lookbook rail */
 .rail-wrap{position:relative;z-index:2}
-.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 20px;margin:0 -20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 20px;margin:0 -20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;overscroll-behavior:contain}
 .rail::-webkit-scrollbar{display:none}
 .rail.dragging{cursor:grabbing;scroll-snap-type:none}
-.rail-item{flex:0 0 min(72vw,300px);scroll-snap-align:start;border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;background:var(--card);box-shadow:6px 6px 0 rgba(25,22,18,.9);text-decoration:none;transition:transform .25s ease}
-.rail-item:hover{transform:translateY(-5px) rotate(-.5deg)}
-.rail-item img{width:100%;aspect-ratio:4/4.4;object-fit:cover;pointer-events:none}
-.rail-item figcaption{padding:13px 16px;font-family:var(--font-display);text-transform:uppercase;font-size:16.5px;letter-spacing:.03em;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.rail-item figcaption span{color:var(--red);font-size:14px}
+.rail-item{flex:0 0 min(72vw,300px);scroll-snap-align:start;text-decoration:none}
+.rail-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;pointer-events:none}
+.rail-item figcaption{padding:12px 2px 0;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.rail-item figcaption b{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:16.5px;letter-spacing:.03em}
+.rail-item figcaption span{color:var(--ink-2);font-size:13.5px;text-align:right}
 @media(min-width:900px){.rail-item{flex-basis:320px}}
 .rail-progress{height:5px;background:rgba(25,22,18,.12);border-radius:99px;overflow:hidden;margin:2px 0 0}
 .rail-progress i{display:block;height:100%;width:12%;background:var(--red);border-radius:99px;transition:width .15s linear}
 
-/* Statements */
-.statements{display:grid;gap:20px;position:relative;z-index:2}
-@media(min-width:900px){.statements{grid-template-columns:1.05fr .95fr;align-items:stretch}}
-.statement{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px;border:2px solid var(--ink);position:relative;overflow:hidden}
-.statement::before{content:"";position:absolute;width:340px;height:340px;right:-120px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(200,64,31,.4),transparent 65%);pointer-events:none}
-.statement .q{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,4.6vw,38px);line-height:1.12;position:relative}
-.statement .q em{font-style:normal;color:var(--red)}
-.statement p{color:#CFC6B2;font-size:15.5px;position:relative}
-.statement-img{position:relative}
-.statement-img img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--red);min-height:280px}
+/* Statements: full-bleed ink band */
+section#statements{padding:0;margin-top:88px}
+.statements-band{background:var(--ink);color:var(--paper);padding:72px 0}
+.statements{display:grid;gap:34px;align-items:center}
+@media(min-width:900px){.statements{grid-template-columns:1.05fr .95fr}}
+.statement{display:flex;flex-direction:column;justify-content:center;gap:16px}
+.statement .q{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,4.6vw,38px);line-height:1.12}
+.statement .q em{font-style:normal;color:#FF8A66}
+.statement p{color:#CFC6B2;font-size:16px;max-width:52ch}
+.statement-img img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);aspect-ratio:4/3;min-height:280px}
 
 /* About */
 .about-grid{display:grid;gap:28px;align-items:center;position:relative;z-index:2}
 @media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
-.about-grid img{border-radius:var(--radius);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);width:100%;aspect-ratio:4/3;object-fit:cover}
+.about-grid img{border-radius:var(--radius);width:100%;aspect-ratio:4/3;object-fit:cover}
 .about-copy p{color:var(--ink-2);margin-top:14px}
 .about-copy p strong{color:var(--ink)}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
-.fact{border:2px solid var(--ink);border-radius:14px;padding:14px 16px;background:var(--card);transition:transform .2s ease,box-shadow .2s ease}
-.fact:hover{transform:translateY(-3px);box-shadow:4px 4px 0 rgba(25,22,18,.85)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin-top:26px}
+.fact{border-top:2px solid var(--ink);padding:14px 2px 16px}
 .fact b{display:block;font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:19px}
 .fact span{font-size:13.5px;color:var(--ink-2)}
 
 /* Steps */
-.steps{display:grid;gap:16px;position:relative;z-index:2}
+.steps{display:grid;gap:26px;position:relative;z-index:2}
 @media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{border:2px solid var(--ink);border-radius:var(--radius);padding:24px 22px;background:var(--card);transition:transform .2s ease,box-shadow .2s ease}
-.step:hover{transform:translateY(-4px);box-shadow:6px 6px 0 rgba(25,22,18,.9)}
+.step{border-top:3px solid var(--ink);padding:22px 4px 0}
 .step .num{font-family:var(--font-display);font-size:40px;color:var(--red);line-height:1}
 .step h3{font-size:19px;margin:10px 0 6px}
 .step p{color:var(--ink-2);font-size:15.5px}
@@ -216,23 +227,24 @@ button.chip:hover{background:var(--ink);color:var(--paper);border-color:var(--in
 /* Popup feature */
 .popup{background:var(--red);color:#FFF3E4;border-radius:calc(var(--radius) + 6px);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:38px 28px;position:relative;overflow:hidden;z-index:2}
 .popup h2{font-size:clamp(36px,8vw,58px);position:relative}
-.popup p{max-width:56ch;margin-top:12px;color:#FFE3D1;position:relative}
+.popup p{max-width:56ch;margin-top:12px;color:#FFF3E4;position:relative}
 .popup .btn{margin-top:22px;background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .popup .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .popup .big-star{position:absolute;right:-30px;top:-30px;width:190px;height:190px;opacity:.16;pointer-events:none;animation:spinSlow 36s linear infinite}
 @keyframes spinSlow{to{transform:rotate(360deg)}}
 
 /* FAQ */
-.faq-list{display:grid;gap:12px;max-width:820px;position:relative;z-index:2}
-details{border:2px solid var(--ink);border-radius:14px;background:var(--card);padding:0 20px}
-summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-list{max-width:820px;position:relative;z-index:2}
+details{border-top:2px solid var(--ink)}
+details:last-child{border-bottom:2px solid var(--ink)}
+summary{cursor:pointer;font-weight:700;font-size:18.5px;padding:20px 4px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--font-display);font-size:22px;color:var(--red);display:inline-block;transition:transform .3s ease}
+summary::after{content:"+";font-family:var(--font-display);font-size:30px;color:var(--red);display:inline-block;transition:transform .3s ease}
 details[open ] summary::after{transform:rotate(45deg)}
 .faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s ease}
 details[open ] .faq-body{grid-template-rows:1fr}
 .faq-body>div{overflow:hidden}
-.faq-body p{padding:0 0 18px;color:var(--ink-2);font-size:15.5px}
+.faq-body p{padding:0 4px 20px;color:var(--ink-2);font-size:15.5px}
 
 /* Contact */
 .contact-grid{display:grid;gap:26px;position:relative;z-index:2}
@@ -242,13 +254,18 @@ details[open ] .faq-body{grid-template-rows:1fr}
 @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(200,64,31,.55),6px 6px 0 rgba(25,22,18,.9)}100%{box-shadow:0 0 0 22px rgba(200,64,31,0),6px 6px 0 rgba(25,22,18,.9)}}
 .contact-card h3{font-family:var(--font-display);text-transform:uppercase;font-size:24px;margin-bottom:8px}
 .contact-card p{color:var(--ink-2);font-size:15.5px}
+.good-list{list-style:none;margin-top:18px;display:grid;gap:0}
+.good-list li{border-top:1.5px solid var(--line);padding:11px 2px;font-size:15px;display:flex;justify-content:space-between;gap:12px}
+.good-list li b{font-weight:700;white-space:nowrap}
+.good-list li span{color:var(--ink-2);text-align:right}
 form{display:grid;gap:14px}
 label{font-weight:600;font-size:14.5px;display:grid;gap:6px}
-input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%;transition:border-color .2s ease,box-shadow .2s ease}
-input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none;box-shadow:4px 4px 0 rgba(25,22,18,.85)}
+input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border:2px solid var(--ink);border-radius:12px;background:var(--paper);color:var(--ink);width:100%;transition:box-shadow .2s ease}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23191612' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+input:focus,select:focus,textarea:focus{outline:none;box-shadow:4px 4px 0 rgba(25,22,18,.85)}
 .form-note{font-size:13.5px;color:var(--ink-2)}
 .direct-links{display:grid;gap:12px;margin-top:20px}
-.direct-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;border:2px solid var(--ink);border-radius:14px;padding:15px 18px;text-decoration:none;font-weight:700;background:var(--paper);transition:background .2s ease,transform .2s ease}
+.direct-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;border:2px solid var(--ink);border-radius:14px;padding:15px 18px;text-decoration:none;font-weight:700;background:var(--paper);transition:background-color .2s ease,transform .2s ease}
 .direct-links a:hover{background:var(--cream);transform:translateX(4px)}
 .direct-links small{display:block;font-weight:500;color:var(--ink-2)}
 
@@ -256,29 +273,33 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none;box
 footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 34px;position:relative;overflow:clip}
 .foot-word{font-family:var(--font-display);font-size:clamp(52px,13vw,110px);text-transform:uppercase;line-height:1;color:var(--paper)}
 .foot-word i{font-style:normal;color:var(--red)}
-.foot-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;margin-top:22px;border-top:1px solid rgba(250,245,236,.2);padding-top:22px}
-.foot-grid nav{display:flex;gap:22px;flex-wrap:wrap}
-.foot-grid a{text-decoration:none;font-weight:600;font-size:15px}
-.foot-grid a:hover{color:var(--red)}
-.credit{margin-top:20px;font-size:13.5px;color:#B7AE99}
+.foot-cols{display:grid;gap:26px;margin-top:26px;border-top:1px solid rgba(250,245,236,.2);padding-top:26px}
+@media(min-width:820px){.foot-cols{grid-template-columns:1.2fr 1fr 1fr}}
+.foot-cols h3{font-size:12.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#B7AE99;margin-bottom:8px}
+.foot-cols nav{display:grid;gap:2px}
+.foot-cols a{text-decoration:none;font-weight:600;font-size:15px;padding:10px 0;display:inline-block}
+.foot-cols a:hover{color:var(--red)}
+.foot-cols p{color:#CFC6B2;font-size:15px;max-width:30ch}
+.credit{margin-top:26px;font-size:13.5px;color:#B7AE99}
 .credit a{color:var(--paper)}
 
-/* Reveal */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.19,1,.22,1);transition-delay:var(--d,0s)}
-.reveal[data-reveal="left"]{transform:translateX(-34px)}
-.reveal[data-reveal="right"]{transform:translateX(34px)}
-.reveal[data-reveal="zoom"]{transform:scale(.94) translateY(14px)}
-.reveal.in{opacity:1;transform:none}
+/* Reveal: hidden state only when JS is available */
+html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.19,1,.22,1);transition-delay:var(--d,0s)}
+html.js .reveal[data-reveal="left"]{transform:translateX(-30px)}
+html.js .reveal[data-reveal="right"]{transform:translateX(30px)}
+html.js .reveal[data-reveal="zoom"]{transform:scale(.97) translateY(10px)}
+html.js .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .marquee-track,.popup .big-star,.sticker{animation:none}
-  .reveal{opacity:1;transform:none;transition:none}
-  .card,.btn,.faq-body{transition:none}
-  .hero h1 .line>span,.hero-line3 .line>span{transform:none;animation:none}
+  html.js .reveal{opacity:1;transform:none;transition:none}
+  .btn,.faq-body,.card figure img{transition:none}
+  .hero h1 .line>span{transform:none;animation:none}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#drop">Skip to the collection</a>
 
 <header>
   <div class="wrap header-in">
@@ -287,10 +308,12 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       <a href="#drop">The Drop</a>
       <a href="#about">About</a>
       <a href="#order">How to Order</a>
+      <a href="#popup">Pop-ups</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
     </nav>
     <div class="header-cta">
-      <a class="btn btn-red" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order on Messenger</a>
+      <a class="btn btn-red" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener" aria-label="Order on Messenger"><span class="cta-full">Order on Messenger</span><span class="cta-short">Order now</span></a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -311,61 +334,58 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
   <!-- HERO -->
   <div class="hero">
     <div class="hero-ghost" aria-hidden="true">Hapsay*</div>
-    <div class="wrap hero-top">
-      <span class="kicker">Philippine streetwear label</span>
-      <h1><span class="line"><span>Wear it</span></span><span class="line"><span><span class="out">loud,</span></span></span></h1>
-    </div>
-
-    <div class="wrap stage-wrap">
-      <div class="stage" id="stage">
-        <div class="stage-fallback">
-          <img src="img/hero.webp" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" fetchpriority="high">
-        </div>
-        <span class="stage-hint" aria-hidden="true">Drag to spin</span>
+    <div class="wrap hero-grid">
+      <div class="hero-top">
+        <span class="kicker">Philippine streetwear label</span>
+        <h1><span class="line"><span>Wear it</span></span><span class="line"><span><span class="out">loud,</span></span></span><span class="line"><span>live it</span></span><span class="line"><span><span class="rd">hapsay.</span></span></span></h1>
       </div>
-      <span class="sticker s1">Frights &amp; Finds pop-up collection</span>
-      <span class="sticker s2">Free stickers with every order</span>
-    </div>
 
-    <div class="wrap hero-line3">
-      <h2><span class="line"><span>live it <span class="rd">hapsay.</span></span></span></h2>
-    </div>
-
-    <div class="wrap">
-      <div class="stage-ui">
-        <div class="stage-cap" id="stageCap">
-          <h3 id="capName">Vision Tee</h3>
-          <p class="print-line" id="capPrint">"Everyone has the same eyes, but not the same vision." Star and eye back print.</p>
-          <div class="colors" id="capColors"><span class="chip">Black</span><span class="chip">Dark gray</span><button type="button" class="chip jump" data-tee="Vision Tee">S to XL</button></div>
+      <div class="hero-stage-col">
+        <div class="stage-wrap">
+          <div class="stage" id="stage">
+            <div class="stage-fallback">
+              <img src="img/hero-800.webp" srcset="img/hero-800.webp 800w, img/hero.webp 1280w" sizes="(min-width:1020px) 560px, 92vw" width="1280" height="1920" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" fetchpriority="high">
+            </div>
+            <span class="stage-hint" aria-hidden="true">Drag to spin</span>
+          </div>
+          <span class="sticker s1">Frights &amp; Finds pop-up collection</span>
+          <span class="sticker s2">Free stickers with every order</span>
         </div>
-        <div class="stage-nav">
-          <button class="stage-btn" id="stagePrev" type="button" aria-label="Previous tee"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <div class="stage-dots" id="stageDots" role="tablist" aria-label="Choose a tee"></div>
-          <button class="stage-btn" id="stageNext" type="button" aria-label="Next tee"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-        <div class="stage-order">
-          <a class="btn btn-red" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+        <div class="stage-ui">
+          <div class="stage-cap" id="stageCap">
+            <p class="cap-name" id="capName">Vision Tee</p>
+            <p class="print-line" id="capPrint">&ldquo;Remember, everyone has the same eyes, but not the same vision.&rdquo; Star and eye back print.</p>
+            <div class="colors" id="capColors" aria-live="polite"><span class="chip">Black</span><span class="chip">Dark Gray</span><button type="button" class="chip jump" data-tee="Vision Tee">Order in S to XL</button></div>
+          </div>
+          <div class="stage-nav">
+            <button class="stage-btn" id="stagePrev" type="button" aria-label="Previous tee"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="stage-dots" id="stageDots" aria-label="Choose a tee"></div>
+            <button class="stage-btn" id="stageNext" type="button" aria-label="Next tee"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+          <div class="stage-order">
+            <a class="btn btn-red" id="stageOrder" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20Vision%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="wrap">
-      <p class="hero-sub">Oversized graphic tees with <strong>statement back prints</strong>, made for peace, growth, and good energy. Designed in the Philippines, dropped in limited runs and pop-ups, and ordered the easy way: <strong>one message on Messenger</strong>.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-red" href="#drop">Shop the drop</a>
-        <a class="btn btn-ghost" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Message to order</a>
+      <div class="hero-bottom">
+        <p class="hero-sub">Oversized graphic tees with <strong>statement back prints</strong>, made for peace, growth, and good energy. Dropped at pop-ups like Frights &amp; Finds and ordered the easy way: <strong>one message on Messenger</strong>.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="#drop">Shop the drop</a>
+          <a class="btn btn-ghost" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Message to order</a>
+        </div>
       </div>
     </div>
 
     <div class="marquee-band" aria-hidden="true">
       <div class="marquee">
         <div class="marquee-track" data-marquee>
-          <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Chasing your dreams <b>*</b>&nbsp;</span>
+          <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Free stickers with every order <b>*</b>&nbsp;</span>
         </div>
       </div>
       <div class="marquee red">
         <div class="marquee-track" data-marquee>
-          <span>Peace <b>*</b> Growth <b>*</b> Money <b>*</b> Good Energy <b>*</b> Get out of your phone <b>*</b> Chasing your dreams <b>*</b>&nbsp;</span>
+          <span>Remember, everyone has the same eyes, but not the same vision <b>*</b> Star and eye <b>*</b> Hapsay Lifestyle <b>*</b>&nbsp;</span>
         </div>
       </div>
     </div>
@@ -373,92 +393,91 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- THE DROP -->
   <section id="drop">
-    <div class="ghost" aria-hidden="true">Frights</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
           <span class="kicker">Latest collection</span>
           <h2>Frights &amp; Finds</h2>
         </div>
-        <p>The Halloween pop-up collection, now open for Messenger orders. Six tees, small runs, sizes Small to XL. Prices are confirmed on Messenger, just ask.</p>
+        <p>The Halloween pop-up collection, now open for Messenger orders. Six tees in sizes Small to XL. Prices are confirmed on Messenger, just ask.</p>
       </div>
       <div class="grid">
 
         <article class="card reveal">
           <figure>
-            <img src="img/tee-vision.webp" alt="Hapsay Vision tee in black with star and eye back print" loading="lazy">
-            <span class="tag hot">Best seller energy</span>
+            <img src="img/tee-vision-800.webp" srcset="img/tee-vision-480.webp 480w, img/tee-vision-800.webp 800w, img/tee-vision.webp 1600w" sizes="(min-width:1000px) 360px, (min-width:640px) 46vw, 92vw" width="1600" height="1600" alt="Hapsay Vision tee in black with star and eye back print" loading="lazy">
+            <span class="tag">Star and eye back print</span>
           </figure>
           <div class="card-body">
             <h3>Vision Tee</h3>
-            <p class="print-line">"Everyone has the same eyes, but not the same vision." Star and eye back print.</p>
-            <div class="colors"><span class="chip">Black</span><span class="chip">Dark gray</span><button type="button" class="chip jump" data-tee="Vision Tee">S to XL</button></div>
-            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+            <p class="print-line">&ldquo;Remember, everyone has the same eyes, but not the same vision.&rdquo; Star and eye back print.</p>
+            <div class="colors"><span class="chip">Black</span><span class="chip">Dark Gray</span><button type="button" class="chip jump" data-tee="Vision Tee">Order in S to XL</button></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20Vision%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
 
         <article class="card reveal">
           <figure>
-            <img src="img/tee-energy.webp" alt="Hapsay Energy tee in white with bold back print" loading="lazy">
+            <img src="img/tee-energy-800.webp" srcset="img/tee-energy-480.webp 480w, img/tee-energy-800.webp 800w, img/tee-energy.webp 1600w" sizes="(min-width:1000px) 360px, (min-width:640px) 46vw, 92vw" width="1600" height="1600" alt="Hapsay Energy tee in white with bold back print" loading="lazy">
             <span class="tag">Statement back</span>
           </figure>
           <div class="card-body">
             <h3>Energy Tee</h3>
-            <p class="print-line">"I only want peace, growth, money and good energy around me."</p>
-            <div class="colors"><span class="chip">Black</span><span class="chip">White</span><button type="button" class="chip jump" data-tee="Energy Tee">S to XL</button></div>
-            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+            <p class="print-line">&ldquo;I only want peace, growth, money and good energy around me.&rdquo;</p>
+            <div class="colors"><span class="chip">Black</span><span class="chip">White</span><button type="button" class="chip jump" data-tee="Energy Tee">Order in S to XL</button></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20Energy%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
 
         <article class="card reveal">
           <figure>
-            <img src="img/tee-sk8.webp" alt="Hapsay SK8 tee in white with cartoon skater back print" loading="lazy">
-            <span class="tag">Skate series</span>
+            <img src="img/tee-sk8-800.webp" srcset="img/tee-sk8-480.webp 480w, img/tee-sk8-800.webp 800w, img/tee-sk8.webp 1600w" sizes="(min-width:1000px) 360px, (min-width:640px) 46vw, 92vw" width="1600" height="1600" alt="Hapsay SK8 tee in white with cartoon skater back print" loading="lazy">
+            <span class="tag">Cartoon skater back print</span>
           </figure>
           <div class="card-body">
             <h3>SK8 Tee</h3>
-            <p class="print-line">Small chest logo up front, cartoon skater holding a sign on the back.</p>
-            <div class="colors"><span class="chip">White</span><button type="button" class="chip jump" data-tee="SK8 Tee">S to XL</button></div>
-            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+            <p class="print-line">Small chest logo up front, cartoon skater on the back.</p>
+            <div class="colors"><span class="chip">White</span><button type="button" class="chip jump" data-tee="SK8 Tee">Order in S to XL</button></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20SK8%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
 
         <article class="card reveal">
           <figure>
-            <img src="img/tee-made.webp" alt="Hapsay Made tee in red with heart script logo" loading="lazy">
-            <span class="tag">New colorway</span>
+            <img src="img/tee-made-800.webp" srcset="img/tee-made-480.webp 480w, img/tee-made-800.webp 800w, img/tee-made.webp 1600w" sizes="(min-width:1000px) 360px, (min-width:640px) 46vw, 92vw" width="1600" height="1600" alt="Hapsay Made tee in red with heart script logo" loading="lazy">
+            <span class="tag">Heart script logo</span>
           </figure>
           <div class="card-body">
             <h3>Made Tee</h3>
-            <p class="print-line">The heart-shaped Hapsay script logo, front and center on red.</p>
-            <div class="colors"><span class="chip">Red</span><button type="button" class="chip jump" data-tee="Made Tee">S to XL</button></div>
-            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+            <p class="print-line">The heart-shaped Hapsay script logo on red.</p>
+            <div class="colors"><span class="chip">Red</span><button type="button" class="chip jump" data-tee="Made Tee">Order in S to XL</button></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20Made%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
 
         <article class="card reveal">
           <figure>
-            <img src="img/tee-outside.webp" alt="Get Outside tee in cream with character back graphic" loading="lazy">
-            <span class="tag hot">Pop-up pick</span>
+            <img src="img/tee-outside-800.webp" srcset="img/tee-outside-480.webp 480w, img/tee-outside-800.webp 800w, img/tee-outside.webp 1600w" sizes="(min-width:1000px) 360px, (min-width:640px) 46vw, 92vw" width="1600" height="1600" alt="Get Outside tee in cream with character back graphic" loading="lazy">
+            <span class="tag">Character back graphic</span>
           </figure>
           <div class="card-body">
             <h3>Get Outside Tee</h3>
-            <p class="print-line">"Get out of your phone." A character jumps out of the screen on the back.</p>
-            <div class="colors"><span class="chip">Cream</span><button type="button" class="chip jump" data-tee="Get Outside Tee">S to XL</button></div>
-            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+            <p class="print-line">&ldquo;Get out of your phone.&rdquo; A character jumps out of a phone on the back.</p>
+            <div class="colors"><span class="chip">Cream</span><button type="button" class="chip jump" data-tee="Get Outside Tee">Order in S to XL</button></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20Get%20Outside%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
 
         <article class="card reveal">
           <figure>
-            <img src="img/tee-lifestyle.webp" alt="Lifestyle tee in black with cursive back wordmark" loading="lazy">
-            <span class="tag">Core piece</span>
+            <img src="img/tee-lifestyle-800.webp" srcset="img/tee-lifestyle-480.webp 480w, img/tee-lifestyle-800.webp 800w, img/tee-lifestyle.webp 1600w" sizes="(min-width:1000px) 360px, (min-width:640px) 46vw, 92vw" width="1600" height="1600" alt="Lifestyle tee in black with cursive back wordmark" loading="lazy">
+            <span class="tag">Cursive back wordmark</span>
           </figure>
           <div class="card-body">
             <h3>Lifestyle Tee</h3>
             <p class="print-line">Script Hapsay on the chest, big cursive Lifestyle across the back.</p>
-            <div class="colors"><span class="chip">Black</span><button type="button" class="chip jump" data-tee="Lifestyle Tee">S to XL</button></div>
-            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Order this tee</a>
+            <div class="colors"><span class="chip">Black</span><button type="button" class="chip jump" data-tee="Lifestyle Tee">Order in S to XL</button></div>
+            <a class="btn btn-ink" href="https://m.me/HapsayLifestyle?text=Hi%20Hapsay!%20I%20want%20to%20order%20the%20Lifestyle%20Tee.%20Is%20it%20available%3F" target="_blank" rel="noopener">Order this tee</a>
           </div>
         </article>
 
@@ -468,48 +487,46 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- LOOKBOOK -->
   <section id="lookbook">
-    <div class="ghost" aria-hidden="true">Lookbook</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="kicker">Lookbook</span>
           <h2>Frights &amp; Finds, worn loud</h2>
         </div>
-        <p>Statement back prints, made for peace, growth, and good energy.</p>
+        <p>The prints up close, plus how an order leaves the studio.</p>
       </div>
       <div class="rail-wrap reveal" data-reveal="zoom">
         <div class="rail" id="rail">
           <figure class="rail-item">
-            <img src="img/hero.webp" alt="Model wearing the Hapsay Vision tee, showing the star and eye back print" loading="lazy">
-            <figcaption>Vision Tee <span>01</span></figcaption>
+            <img src="img/look-vision.webp" width="800" height="1000" alt="Close-up of the Vision tee star and eye back print" loading="lazy">
+            <figcaption><b>Vision Tee</b><span>Star and eye, up close</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/tee-energy.webp" alt="Hapsay Energy tee in white with bold back print" loading="lazy">
-            <figcaption>Energy Tee <span>02</span></figcaption>
+            <img src="img/look-energy.webp" width="800" height="1000" alt="Close-up of the Energy tee statement back print" loading="lazy">
+            <figcaption><b>Energy Tee</b><span>The statement, up close</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/tee-sk8.webp" alt="Hapsay SK8 tee in white with cartoon skater back print" loading="lazy">
-            <figcaption>SK8 Tee <span>03</span></figcaption>
+            <img src="img/look-sk8.webp" width="800" height="1000" alt="Close-up of the SK8 tee cartoon skater back print" loading="lazy">
+            <figcaption><b>SK8 Tee</b><span>Cartoon skater, up close</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/surf-shop.webp" alt="Inside a tropical surf lifestyle shop with racks of graphic tees and surfboards" loading="lazy">
-            <figcaption>The Hapsay mindset <span>04</span></figcaption>
+            <img src="img/look-made.webp" width="800" height="1000" alt="Close-up of the Made tee heart-shaped Hapsay script logo" loading="lazy">
+            <figcaption><b>Made Tee</b><span>Heart script, up close</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/tee-made.webp" alt="Hapsay Made tee in red with heart script logo" loading="lazy">
-            <figcaption>Made Tee <span>05</span></figcaption>
+            <img src="img/look-outside.webp" width="800" height="1000" alt="Close-up of the Get Outside tee character jumping out of a phone" loading="lazy">
+            <figcaption><b>Get Outside Tee</b><span>Out of the phone, up close</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/tee-outside.webp" alt="Get Outside tee in cream with character back graphic" loading="lazy">
-            <figcaption>Get Outside Tee <span>06</span></figcaption>
+            <img src="img/look-lifestyle.webp" width="800" height="1000" alt="Close-up of the Lifestyle tee cursive back wordmark" loading="lazy">
+            <figcaption><b>Lifestyle Tee</b><span>Cursive back, up close</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/beach-crew.webp" alt="Friends in oversized tees walking toward surfboards on a Philippine beach" loading="lazy">
-            <figcaption>Surf and skate life <span>07</span></figcaption>
+            <img src="img/packing-800.webp" srcset="img/packing-800.webp 800w, img/packing-1200.webp 1200w, img/packing.webp 1920w" sizes="(min-width:900px) 320px, 72vw" width="1920" height="1280" alt="Folded Hapsay tees with a pink mailer and free stickers, packed and ready to ship" loading="lazy">
+            <figcaption><b>Every order</b><span>Packed with free stickers</span></figcaption>
           </figure>
           <figure class="rail-item">
-            <img src="img/tee-lifestyle.webp" alt="Lifestyle tee in black with cursive back wordmark" loading="lazy">
-            <figcaption>Lifestyle Tee <span>08</span></figcaption>
+            <img src="img/popup-booth-800.webp" srcset="img/popup-booth-800.webp 800w, img/popup-booth-1200.webp 1200w, img/popup-booth.webp 1920w" sizes="(min-width:900px) 320px, 72vw" width="1920" height="1280" alt="Hapsay pop-up booth with a rack of tees under a Hapsay banner at golden hour" loading="lazy">
+            <figcaption><b>Pop-up days</b><span>The booth, golden hour</span></figcaption>
           </figure>
         </div>
         <div class="rail-progress" aria-hidden="true"><i id="railBar"></i></div>
@@ -519,23 +536,23 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- STATEMENTS -->
   <section id="statements">
-    <div class="ghost" aria-hidden="true">Vision</div>
-    <div class="wrap statements">
-      <div class="statement reveal" data-reveal="left">
-        <span class="kicker" style="color:#FF8A66">The Hapsay mindset</span>
-        <p class="q">"Remember, everyone has the same eyes, but <em>not the same vision.</em>"</p>
-        <p>Every Hapsay tee carries its message on the back, so the statement walks in after you do. The Vision and Energy prints started as pop-up favorites and became the label's signature.</p>
-        <p class="q" style="font-size:clamp(20px,3.4vw,27px)">"Peace, growth, money and <em>good energy</em> only."</p>
-      </div>
-      <div class="statement-img reveal" data-reveal="right">
-        <img src="img/surf-shop.webp" alt="Inside a tropical surf lifestyle shop with racks of graphic tees and surfboards" loading="lazy">
+    <div class="statements-band">
+      <div class="wrap statements">
+        <div class="statement reveal" data-reveal="left">
+          <span class="kicker" style="color:#FF8A66">The Hapsay mindset</span>
+          <p class="q">&ldquo;Remember, everyone has the same eyes, but <em>not the same vision.</em>&rdquo;</p>
+          <p>The prints do the talking: a star and eye for vision, a reminder to keep peace, growth, money and good energy around you, and a nudge to get out of your phone. Say it without saying a word.</p>
+          <p class="q" style="font-size:clamp(20px,3.4vw,27px)">&ldquo;Peace, growth, money and <em>good energy</em> only.&rdquo;</p>
+        </div>
+        <div class="statement-img reveal" data-reveal="right">
+          <img src="img/popup-booth-1200.webp" srcset="img/popup-booth-800.webp 800w, img/popup-booth-1200.webp 1200w, img/popup-booth.webp 1920w" sizes="(min-width:900px) 46vw, 92vw" width="1920" height="1280" alt="Hapsay pop-up booth with a rack of tees under a Hapsay banner at golden hour" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="ghost" aria-hidden="true">Hapsay</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
@@ -545,16 +562,16 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       </div>
       <div class="about-grid">
         <div class="reveal" data-reveal="left">
-          <img src="img/beach-crew.webp" alt="Friends in oversized tees walking toward surfboards on a Philippine beach" loading="lazy">
+          <img src="img/packing-1200.webp" srcset="img/packing-800.webp 800w, img/packing-1200.webp 1200w, img/packing.webp 1920w" sizes="(min-width:900px) 46vw, 92vw" width="1920" height="1280" alt="Folded Hapsay tees with a pink mailer and free stickers, packed and ready to ship" loading="lazy">
         </div>
         <div class="about-copy reveal" data-reveal="right">
-          <p><strong>Hapsay Lifestyle</strong> is a Philippine clothing label built around one idea: what you wear should say something. Its oversized tees pair clean fronts with loud, thoughtful back prints, from the star-and-eye Vision graphic to reminders to get off your phone and chase your dreams.</p>
-          <p>The label sells the grassroots way: drops announced on Facebook, pop-up booths like <strong>Frights &amp; Finds</strong>, and orders packed and shipped by the team to a growing community of wearers in <strong>Cebu, Davao</strong>, and beyond.</p>
+          <p><strong>Hapsay Lifestyle</strong> is a Philippine clothing label built around one idea: what you wear should say something. Its oversized tees pair clean fronts with loud, thoughtful back prints, from the star-and-eye Vision graphic to a reminder to get out of your phone.</p>
+          <p>The label sells the grassroots way: drops announced on Facebook, pop-up booths like <strong>Frights &amp; Finds</strong>, and orders packed and shipped by the team to wearers in <strong>Cebu and Davao</strong>.</p>
           <div class="facts">
-            <div class="fact"><b>S to XL</b><span>Oversized fits, unisex styling</span></div>
+            <div class="fact"><b>S to XL</b><span>Oversized fit, sizes Small to XL</span></div>
             <div class="fact"><b>Free stickers</b><span>Included with every order</span></div>
-            <div class="fact"><b>Pop-up drops</b><span>Limited runs, announced on the Page</span></div>
-            <div class="fact"><b>Ships to you</b><span>Orders packed and shipped nationwide</span></div>
+            <div class="fact"><b>Pop-up drops</b><span>Announced first on the Facebook Page</span></div>
+            <div class="fact"><b>Packed and shipped</b><span>Orders ship after payment is confirmed</span></div>
           </div>
         </div>
       </div>
@@ -563,7 +580,6 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
   <!-- HOW TO ORDER -->
   <section id="order">
-    <div class="ghost" aria-hidden="true">Order</div>
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
@@ -576,7 +592,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         <div class="step reveal">
           <div class="num">01</div>
           <h3>Pick your tee</h3>
-          <p>Choose a design and colorway from The Drop above, and your size from Small to XL. Oversized fit, so size down if you want it closer.</p>
+          <p>Choose a design and colorway from The Drop above, and your size from Small to XL.</p>
         </div>
         <div class="step reveal">
           <div class="num">02</div>
@@ -586,7 +602,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         <div class="step reveal">
           <div class="num">03</div>
           <h3>Pay, then it ships</h3>
-          <p>Orders are payment first, then packed and shipped to your door. Free Hapsay stickers ride along with every order.</p>
+          <p>Orders are payment first, then packed and shipped. Free Hapsay stickers ride along with every order.</p>
         </div>
       </div>
     </div>
@@ -599,7 +615,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         <svg class="big-star" viewBox="0 0 100 100" fill="#FFF3E4" aria-hidden="true"><path d="M50 2 L61 38 L98 38 L68 59 L79 95 L50 73 L21 95 L32 59 L2 38 L39 38 Z"/></svg>
         <span class="kicker" style="color:#FFE3D1">Pop-ups</span>
         <h2>Frights &amp; Finds, the Halloween drop</h2>
-        <p>The latest collection first landed at the Frights &amp; Finds pop-up, spiderwebs and all. Missed the booth? The same tees are open for Messenger orders while stocks last, and the next pop-up gets announced on the Facebook Page first.</p>
+        <p>The latest collection first landed at the Frights &amp; Finds pop-up. Missed the booth? The same tees are open for Messenger orders, and the next pop-up gets announced on the Facebook Page first.</p>
         <a class="btn" href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Follow the Page for the next pop-up</a>
       </div>
     </div>
@@ -610,8 +626,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="kicker">Good to know</span>
-          <h2>Questions</h2>
+          <h2>Before you order</h2>
         </div>
       </div>
       <div class="faq-list reveal">
@@ -621,7 +636,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         </details>
         <details>
           <summary>What sizes are available?</summary>
-          <div class="faq-body"><div><p>Tees come in Small to XL with an oversized, unisex fit. If you are between sizes or want a closer fit, ask on Messenger and the team will help you pick.</p></div></div>
+          <div class="faq-body"><div><p>Tees come in Small to XL with an oversized fit. If you are between sizes, ask on Messenger and the team will help you pick.</p></div></div>
         </details>
         <details>
           <summary>How do I pay?</summary>
@@ -629,11 +644,11 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         </details>
         <details>
           <summary>Do you ship outside your city?</summary>
-          <div class="faq-body"><div><p>Yes. Orders are packed and shipped to customers around the Philippines, including the brand's community in Cebu and Davao.</p></div></div>
+          <div class="faq-body"><div><p>Yes. Orders are packed and shipped after payment, and Hapsay wearers in Cebu and Davao have received theirs. Message the Page and the team will confirm shipping to your address.</p></div></div>
         </details>
         <details>
           <summary>What comes with my order?</summary>
-          <div class="faq-body"><div><p>Your tee, plus free Hapsay stickers with every order. Pop-up collections are limited runs, so once a design sells out it may not come back.</p></div></div>
+          <div class="faq-body"><div><p>Your tee, plus free Hapsay stickers with every order.</p></div></div>
         </details>
       </div>
     </div>
@@ -651,8 +666,14 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       </div>
       <div class="contact-grid">
         <div class="contact-card reveal" data-reveal="left">
-          <h3>Quick inquiry</h3>
-          <p>Tell us what you are eyeing. The button below opens Messenger with your message composed, nothing is sent until you tap send there.</p>
+          <h3>Good to know</h3>
+          <p>The short version, before you message.</p>
+          <ul class="good-list">
+            <li><b>Sizes</b><span>Small to XL, oversized fit</span></li>
+            <li><b>Prices</b><span>Confirmed on Messenger</span></li>
+            <li><b>Payment</b><span>Payment first, then it ships</span></li>
+            <li><b>Free stickers</b><span>With every order</span></li>
+          </ul>
           <div class="direct-links">
             <a href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">
               <span>Messenger<small>Fastest reply, order here</small></span><span aria-hidden="true">-&gt;</span>
@@ -664,8 +685,8 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         </div>
         <div class="contact-card reveal" data-reveal="right" id="formCard">
           <form id="inquiryForm">
-            <label>Your name
-              <input type="text" id="fName" name="name" placeholder="Juan Dela Cruz" autocomplete="name" required>
+            <label>Your name (optional)
+              <input type="text" id="fName" name="name" placeholder="Juan Dela Cruz…" autocomplete="name" spellcheck="false">
             </label>
             <label>Tee you want
               <select id="fTee" name="tee">
@@ -678,17 +699,20 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
                 <option>Something else / not sure yet</option>
               </select>
             </label>
+            <label>Colorway
+              <select id="fColor" name="color"></select>
+            </label>
             <label>Size
               <select id="fSize" name="size">
                 <option>Small</option>
                 <option>Medium</option>
-                <option selected>Large</option>
+                <option>Large</option>
                 <option>XL</option>
-                <option>Help me choose</option>
+                <option selected>Help me choose</option>
               </select>
             </label>
             <label>Message
-              <textarea id="fMsg" name="message" rows="3" placeholder="Color preference, questions, anything else"></textarea>
+              <textarea id="fMsg" name="message" rows="3" placeholder="Color preference, questions, anything else…"></textarea>
             </label>
             <button class="btn btn-red" type="submit">Continue to Messenger</button>
             <p class="form-note">This form does not collect or store anything. It opens Messenger with your inquiry pre-written.</p>
@@ -703,17 +727,31 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 <footer>
   <div class="wrap">
     <div class="foot-word">Hapsay<i>*</i></div>
-    <div class="foot-grid">
-      <nav aria-label="Footer">
-        <a href="#drop">The Drop</a>
-        <a href="#about">About</a>
-        <a href="#order">How to Order</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <nav aria-label="Social">
-        <a href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Messenger</a>
-      </nav>
+    <div class="foot-cols">
+      <div>
+        <h3>The collection</h3>
+        <nav aria-label="Collection">
+          <a href="#drop">Vision Tee</a>
+          <a href="#drop">Energy Tee</a>
+          <a href="#drop">SK8 Tee</a>
+          <a href="#drop">Made Tee</a>
+          <a href="#drop">Get Outside Tee</a>
+          <a href="#drop">Lifestyle Tee</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Pop-ups</h3>
+        <p>The next pop-up is announced on the Facebook Page first.</p>
+        <a href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Follow the Page</a>
+      </div>
+      <div>
+        <h3>Ordering</h3>
+        <p>Sizes Small to XL. Free stickers with every order.</p>
+        <nav aria-label="Social">
+          <a href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Messenger</a>
+        </nav>
+      </div>
     </div>
     <p class="credit">Hapsay Lifestyle. Statement tees from the Philippines.<br>Made by Mohammad Sidique Ibrahim</p>
   </div>
@@ -722,14 +760,15 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 <script>
 (function(){
   var TEES = [
-    {name:"Vision Tee", print:"\"Everyone has the same eyes, but not the same vision.\" Star and eye back print.", colors:["Black","Dark gray"], img:"img/hero.webp", alt:"Model wearing the Hapsay Vision tee, showing the star and eye back print"},
-    {name:"Energy Tee", print:"\"I only want peace, growth, money and good energy around me.\"", colors:["Black","White"], img:"img/tee-energy.webp", alt:"Hapsay Energy tee in white with bold back print"},
-    {name:"SK8 Tee", print:"Small chest logo up front, cartoon skater holding a sign on the back.", colors:["White"], img:"img/tee-sk8.webp", alt:"Hapsay SK8 tee in white with cartoon skater back print"},
-    {name:"Made Tee", print:"The heart-shaped Hapsay script logo, front and center on red.", colors:["Red"], img:"img/tee-made.webp", alt:"Hapsay Made tee in red with heart script logo"},
-    {name:"Get Outside Tee", print:"\"Get out of your phone.\" A character jumps out of the screen on the back.", colors:["Cream"], img:"img/tee-outside.webp", alt:"Get Outside tee in cream with character back graphic"},
-    {name:"Lifestyle Tee", print:"Script Hapsay on the chest, big cursive Lifestyle across the back.", colors:["Black"], img:"img/tee-lifestyle.webp", alt:"Lifestyle tee in black with cursive back wordmark"}
+    {name:"Vision Tee", slug:"vision", print:"\u201CRemember, everyone has the same eyes, but not the same vision.\u201D Star and eye back print.", colors:["Black","Dark Gray"], img:"img/hero.webp", img800:"img/hero-800.webp", imgw:1280, alt:"Model wearing the Hapsay Vision tee, showing the star and eye back print"},
+    {name:"Energy Tee", slug:"energy", print:"\u201CI only want peace, growth, money and good energy around me.\u201D", colors:["Black","White"], img:"img/tee-energy.webp", img800:"img/tee-energy-800.webp", imgw:1600, alt:"Hapsay Energy tee in white with bold back print"},
+    {name:"SK8 Tee", slug:"sk8", print:"Small chest logo up front, cartoon skater on the back.", colors:["White"], img:"img/tee-sk8.webp", img800:"img/tee-sk8-800.webp", imgw:1600, alt:"Hapsay SK8 tee in white with cartoon skater back print"},
+    {name:"Made Tee", slug:"made", print:"The heart-shaped Hapsay script logo on red.", colors:["Red"], img:"img/tee-made.webp", img800:"img/tee-made-800.webp", imgw:1600, alt:"Hapsay Made tee in red with heart script logo"},
+    {name:"Get Outside Tee", slug:"outside", print:"\u201CGet out of your phone.\u201D A character jumps out of a phone on the back.", colors:["Cream"], img:"img/tee-outside.webp", img800:"img/tee-outside-800.webp", imgw:1600, alt:"Get Outside tee in cream with character back graphic"},
+    {name:"Lifestyle Tee", slug:"lifestyle", print:"Script Hapsay on the chest, big cursive Lifestyle across the back.", colors:["Black"], img:"img/tee-lifestyle.webp", img800:"img/tee-lifestyle-800.webp", imgw:1600, alt:"Lifestyle tee in black with cursive back wordmark"}
   ];
   var current = 0;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Mobile nav
   var burger = document.getElementById('burger');
@@ -745,47 +784,32 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     });
   });
 
-  // Header state: shadow on scroll, hide on scroll down, show on scroll up
+  // Header state: shadow on scroll; hide on scroll down (disabled for reduced motion)
   var header = document.querySelector('header');
   var lastY = 0;
   function onScrollHeader(){
     var y = window.scrollY || 0;
     header.classList.toggle('scrolled', y > 10);
+    if(reducedMotion){ header.classList.remove('hidden'); lastY = y; return; }
     if(y > 520 && y > lastY + 4){ header.classList.add('hidden'); }
     else if(y < lastY - 4 || y < 200){ header.classList.remove('hidden'); }
     lastY = y;
-  }
-
-  // Ghost word parallax
-  var ghosts = document.querySelectorAll('.ghost, .hero-ghost');
-  function onScrollGhosts(){
-    var mid = window.innerHeight / 2;
-    ghosts.forEach(function(el){
-      var r = el.parentElement.getBoundingClientRect();
-      var off = ((r.top + r.height / 2) - mid) * -0.045;
-      el.style.setProperty('--py', off.toFixed(1) + 'px');
-    });
   }
   var ticking = false;
   window.addEventListener('scroll', function(){
     if(!ticking){
       ticking = true;
-      requestAnimationFrame(function(){ onScrollHeader(); onScrollGhosts(); ticking = false; });
+      requestAnimationFrame(function(){ onScrollHeader(); ticking = false; });
     }
   }, {passive:true});
-  onScrollHeader(); onScrollGhosts();
+  onScrollHeader();
 
   // Duplicate marquee content for a seamless loop
   document.querySelectorAll('[data-marquee]').forEach(function(track){
     track.innerHTML += track.innerHTML;
   });
 
-  // Reveal on scroll, with per-group stagger
-  var byParent = {};
-  document.querySelectorAll('.reveal').forEach(function(el){
-    var p = el.parentElement;
-    byParent[p ? p.className : ''] = byParent[p ? p.className : ''] || 0;
-  });
+  // Reveal on scroll, with per-group stagger, plus a safety pass so nothing stays hidden
   var counters = {};
   document.querySelectorAll('.reveal').forEach(function(el){
     var key = el.parentElement ? el.parentElement.className : '';
@@ -797,72 +821,78 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       if(e.isIntersecting){
         e.target.classList.add('in');
         io.unobserve(e.target);
-        if(e.target.classList.contains('card')){
-          setTimeout(function(){ e.target.classList.add('tilt-ready'); }, 750);
-        }
       }
     });
   }, {threshold: .12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-
-  // Pointer tilt and glare on product cards (fine pointers only)
-  if(window.matchMedia('(pointer:fine)').matches){
-    document.querySelectorAll('.card').forEach(function(card){
-      var fig = card.querySelector('figure');
-      card.addEventListener('pointermove', function(ev){
-        if(!card.classList.contains('tilt-ready')) return;
-        var r = card.getBoundingClientRect();
-        var px = (ev.clientX - r.left) / r.width;
-        var py = (ev.clientY - r.top) / r.height;
-        card.style.transform = 'perspective(950px) rotateX(' + ((0.5 - py) * 7).toFixed(2) + 'deg) rotateY(' + ((px - 0.5) * 9).toFixed(2) + 'deg) translateY(-4px)';
-        if(fig){ fig.style.setProperty('--mx', (px * 100) + '%'); fig.style.setProperty('--my', (py * 100) + '%'); }
-      });
-      card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+  setTimeout(function(){
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight * 1.5){ el.classList.add('in'); }
     });
-  }
+  }, 2600);
 
-  // Stage caption and fallback image sync
+  // Stage caption, dots, fallback image and order link sync
   var cap = document.getElementById('stageCap');
   var capName = document.getElementById('capName');
   var capPrint = document.getElementById('capPrint');
   var capColors = document.getElementById('capColors');
   var dotsWrap = document.getElementById('stageDots');
+  var stageOrder = document.getElementById('stageOrder');
+  var stageEl = document.getElementById('stage');
   var fallbackImg = document.querySelector('.stage-fallback img');
   TEES.forEach(function(tee, i){
     var b = document.createElement('button');
     b.type = 'button';
     b.setAttribute('aria-label', 'Show ' + tee.name);
-    if(i === 0) b.classList.add('active');
+    b.innerHTML = '<i aria-hidden="true"></i>';
+    if(i === 0){ b.classList.add('active'); b.setAttribute('aria-current', 'true'); }
     b.addEventListener('click', function(){ goTo(i); });
     dotsWrap.appendChild(b);
   });
+  function orderHref(name){
+    return 'https://m.me/HapsayLifestyle?text=' + encodeURIComponent('Hi Hapsay! I want to order the ' + name + '. Is it available?');
+  }
+  function syncFallback(i){
+    var tee = TEES[i];
+    if(!fallbackImg) return;
+    fallbackImg.src = tee.img800;
+    fallbackImg.srcset = tee.img800 + ' 800w, ' + tee.img + ' ' + tee.imgw + 'w';
+    fallbackImg.alt = tee.alt;
+  }
   function renderCaption(i){
     var tee = TEES[i];
     capName.textContent = tee.name;
     capPrint.textContent = tee.print;
     var html = '';
     tee.colors.forEach(function(c){ html += '<span class="chip">' + c + '</span>'; });
-    html += '<button type="button" class="chip jump" data-tee="' + tee.name + '">S to XL</button>';
+    html += '<button type="button" class="chip jump" data-tee="' + tee.name + '">Order in S to XL</button>';
     capColors.innerHTML = html;
     bindJumps(capColors);
     dotsWrap.querySelectorAll('button').forEach(function(d, di){
       d.classList.toggle('active', di === i);
+      if(di === i){ d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
     });
-    document.getElementById('stagePrev').disabled = (i === 0);
-    document.getElementById('stageNext').disabled = (i === TEES.length - 1);
+    stageOrder.href = orderHref(tee.name);
     cap.classList.remove('swap');
     void cap.offsetWidth;
     cap.classList.add('swap');
-    if(fallbackImg && !document.getElementById('stage').classList.contains('webgl-on')){
-      fallbackImg.src = tee.img;
-      fallbackImg.alt = tee.alt;
-    }
+    if(!stageEl.classList.contains('webgl-on')){ syncFallback(i); }
+  }
+  function setUrlTee(slug){
+    try{
+      var url = new URL(window.location.href);
+      url.searchParams.set('tee', slug);
+      history.replaceState(null, '', url.toString());
+    }catch(e){}
   }
   var expecting = null;
   function goTo(i){
-    current = Math.max(0, Math.min(TEES.length - 1, i));
+    var n = TEES.length;
+    current = ((i % n) + n) % n;
     expecting = current;
     renderCaption(current);
+    setUrlTee(TEES[current].slug);
     if(window.HapsayStage){ window.HapsayStage.focus(current); }
   }
   document.getElementById('stagePrev').addEventListener('click', function(){ goTo(current - 1); });
@@ -873,34 +903,80 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         if(i === expecting){ expecting = null; }
         return;
       }
-      if(i !== current){ current = i; renderCaption(i); }
+      if(i !== current){
+        current = i;
+        renderCaption(i);
+        setUrlTee(TEES[i].slug);
+      }
     },
     noteDrag: function(){ expecting = null; },
-    getIndex: function(){ return current; }
+    getIndex: function(){ return current; },
+    resyncFallback: function(){ syncFallback(current); }
   };
-  renderCaption(0);
+  // Deep link: ?tee=<slug> preselects the stage tee
+  var startIdx = 0;
+  try{
+    var q = new URLSearchParams(window.location.search).get('tee');
+    if(q){
+      TEES.forEach(function(t, i){ if(t.slug === q.toLowerCase()){ startIdx = i; } });
+    }
+  }catch(e){}
+  current = startIdx;
+  renderCaption(startIdx);
+  if(startIdx !== 0){ expecting = startIdx; }
 
-  // Size chips jump to the inquiry form with the tee preselected
+  // Size chips jump to the inquiry form with the tee (and its colorways) preselected.
+  // The stage caption chips are bound by renderCaption only, never twice.
   function bindJumps(scope){
     scope.querySelectorAll('.chip.jump').forEach(function(chip){
+      if(scope !== capColors && chip.closest('#capColors')){ return; }
       chip.addEventListener('click', function(){
         var tee = chip.getAttribute('data-tee');
         var sel = document.getElementById('fTee');
         for(var i = 0; i < sel.options.length; i++){
           if(sel.options[i].text === tee){ sel.selectedIndex = i; break; }
         }
-        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        populateColors();
+        document.getElementById('contact').scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth'});
         var card = document.getElementById('formCard');
         setTimeout(function(){
           card.classList.remove('pulse');
           void card.offsetWidth;
           card.classList.add('pulse');
           document.getElementById('fName').focus({preventScroll:true});
-        }, 650);
+        }, reducedMotion ? 60 : 650);
       });
     });
   }
   bindJumps(document);
+
+  // Colorway select follows the chosen tee
+  var fTee = document.getElementById('fTee');
+  var fColor = document.getElementById('fColor');
+  function populateColors(){
+    var tee = null;
+    TEES.forEach(function(t){ if(t.name === fTee.value){ tee = t; } });
+    var opts = tee ? tee.colors.slice() : [];
+    opts.push('Not sure yet');
+    fColor.innerHTML = '';
+    opts.forEach(function(c){
+      var o = document.createElement('option');
+      o.textContent = c;
+      fColor.appendChild(o);
+    });
+  }
+  fTee.addEventListener('change', populateColors);
+  populateColors();
+
+  // FAQ: one panel open at a time
+  var faqItems = document.querySelectorAll('.faq-list details');
+  faqItems.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if(d.open){
+        faqItems.forEach(function(o){ if(o !== d){ o.open = false; } });
+      }
+    });
+  });
 
   // Lookbook rail: drag to scroll and progress bar
   var rail = document.getElementById('rail');
@@ -927,34 +1003,79 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     rail.classList.remove('dragging');
   });
 
-  // Inquiry form -> Messenger with a composed message
+  // Inquiry form -> Messenger with a composed message. Nothing is stored.
   document.getElementById('inquiryForm').addEventListener('submit', function(ev){
     ev.preventDefault();
     var name = document.getElementById('fName').value.trim();
-    var tee = document.getElementById('fTee').value;
+    var tee = fTee.value;
+    var color = fColor.value;
     var size = document.getElementById('fSize').value;
     var msg = document.getElementById('fMsg').value.trim();
-    var text = 'Hi Hapsay! I am ' + name + '. I want to order the ' + tee + ', size ' + size + '.';
-    if(msg){ text += ' ' + msg; }
+    var text = 'Hi Hapsay! ';
+    if(name){ text += 'I am ' + name + '. '; }
+    if(tee === 'Something else / not sure yet'){
+      text += 'I want to ask about your tees.';
+    } else {
+      text += 'I want to order the ' + tee;
+      if(color && color !== 'Not sure yet'){ text += ' in ' + color; }
+      text += '.';
+    }
+    if(size === 'Help me choose'){
+      text += ' I need help choosing a size.';
+    } else {
+      text += ' Size ' + size + '.';
+    }
+    if(msg){
+      if(!/[.!?\u2026]$/.test(msg)){ msg += '.'; }
+      text += ' ' + msg;
+    }
     text += ' Is it available?';
     var url = 'https://m.me/HapsayLifestyle?text=' + encodeURIComponent(text);
     window.open(url, '_blank', 'noopener');
   });
+
+  // 3D stage: load Three.js on demand, only when WebGL exists and motion is allowed.
+  // Everyone else keeps the framed-photo fallback, and never downloads the library.
+  function webglAvailable(){
+    try{
+      var c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    }catch(e){ return false; }
+  }
+  if(!reducedMotion && webglAvailable()){
+    var threeStarted = false;
+    var loadThree = function(){
+      if(threeStarted) return;
+      threeStarted = true;
+      var s = document.createElement('script');
+      s.src = 'vendor/three.min.js';
+      s.onload = function(){ if(window.HapsayStageInit){ window.HapsayStageInit(); } };
+      document.body.appendChild(s);
+    };
+    if('IntersectionObserver' in window){
+      var sio = new IntersectionObserver(function(en){
+        if(en[0].isIntersecting){ loadThree(); sio.disconnect(); }
+      }, {rootMargin: '500px'});
+      sio.observe(stageEl);
+    } else {
+      loadThree();
+    }
+  }
 })();
 </script>
-<script src="vendor/three.min.js"></script>
+
 <script>
-(function(){
+window.HapsayStageInit = function(){
   var stageEl = document.getElementById('stage');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced || typeof THREE === 'undefined'){ return; }
 
   var TEES = [
-    {name:"Vision Tee", file:"vision", print:"\"Everyone has the same eyes, but not the same vision.\" Star and eye back print."},
-    {name:"Energy Tee", file:"energy", print:"\"I only want peace, growth, money and good energy around me.\""},
-    {name:"SK8 Tee", file:"sk8", print:"Small chest logo up front, cartoon skater holding a sign on the back."},
-    {name:"Made Tee", file:"made", print:"The heart-shaped Hapsay script logo, front and center on red."},
-    {name:"Get Outside Tee", file:"outside", print:"\"Get out of your phone.\" A character jumps out of the screen on the back."},
+    {name:"Vision Tee", file:"vision", print:"\u201CRemember, everyone has the same eyes, but not the same vision.\u201D Star and eye back print."},
+    {name:"Energy Tee", file:"energy", print:"\u201CI only want peace, growth, money and good energy around me.\u201D"},
+    {name:"SK8 Tee", file:"sk8", print:"Small chest logo up front, cartoon skater on the back."},
+    {name:"Made Tee", file:"made", print:"The heart-shaped Hapsay script logo on red."},
+    {name:"Get Outside Tee", file:"outside", print:"\u201CGet out of your phone.\u201D A character jumps out of a phone on the back."},
     {name:"Lifestyle Tee", file:"lifestyle", print:"Script Hapsay on the chest, big cursive Lifestyle across the back."}
   ];
   var INK = '#191612', CREAM = '#FAF5EC', MUTED = '#CFC6B2', RED = '#C8401F';
@@ -992,7 +1113,6 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     var c = document.createElement('canvas'); c.width = 512; c.height = 640;
     var x = c.getContext('2d');
     roundRect(x, 0, 0, 512, 640, 40); x.fillStyle = INK; x.fill();
-    roundRect(x, 14, 14, 484, 612, 30); x.strokeStyle = 'rgba(250,245,236,.28)'; x.lineWidth = 3; x.stroke();
     starPath(x, 256, 158, 76); x.fillStyle = RED; x.fill();
     x.textAlign = 'center'; x.fillStyle = CREAM;
     var size = 60;
@@ -1007,20 +1127,6 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     var t = new THREE.CanvasTexture(c);
     t.encoding = THREE.sRGBEncoding;
     t.anisotropy = 4;
-    return t;
-  }
-  function makePillTexture(){
-    var c = document.createElement('canvas'); c.width = 640; c.height = 320;
-    var x = c.getContext('2d');
-    roundRect(x, 10, 10, 620, 300, 150); x.fillStyle = RED; x.fill();
-    x.lineWidth = 13; x.strokeStyle = INK; x.stroke();
-    x.textAlign = 'center'; x.fillStyle = CREAM;
-    x.font = '94px Anton, "Arial Black", sans-serif';
-    x.fillText('FREE STICKERS', 320, 152);
-    x.font = '55px Anton, "Arial Black", sans-serif';
-    x.fillText('WITH EVERY ORDER', 320, 238);
-    var t = new THREE.CanvasTexture(c);
-    t.encoding = THREE.sRGBEncoding;
     return t;
   }
   function makeStarTexture(){
@@ -1093,7 +1199,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       back.position.z = -0.016;
       back.userData.index = i;
       var rimMat = new THREE.MeshBasicMaterial({color:0x191612});
-      var rimP = new THREE.Mesh(new THREE.PlaneGeometry(W + 0.075, H + 0.075), rimMat);
+      var rimP = new THREE.Mesh(new THREE.PlaneGeometry(W + 0.03, H + 0.03), rimMat);
       rimP.position.z = -0.032;
       g.add(rimP); g.add(back); g.add(front);
       group.add(g);
@@ -1107,14 +1213,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     );
     star.renderOrder = 30;
     group.add(star);
-    var pill = new THREE.Mesh(
-      new THREE.PlaneGeometry(2.05, 1.02),
-      new THREE.MeshBasicMaterial({map:makePillTexture(), transparent:true, depthWrite:false})
-    );
-    pill.renderOrder = 30;
-    group.add(pill);
     var starBase = {x:-3.0, y:1.55, z:-0.5, s:1};
-    var pillBase = {x:2.72, y:-1.5, z:-0.5, s:1};
 
     var cfg = {step:0.58, R:3.5};
     function fit(){
@@ -1133,15 +1232,11 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       camera.updateProjectionMatrix();
       if(portrait){
         starBase = {x:-1.55, y:-1.6, z:0.65, s:0.8};
-        pillBase = {x:1.42, y:-1.66, z:0.65, s:0.66};
       } else {
         starBase = {x:-2.95, y:1.15, z:-0.5, s:1};
-        pillBase = {x:2.72, y:-1.2, z:-0.5, s:1};
       }
       star.position.set(starBase.x, starBase.y, starBase.z);
       star.scale.setScalar(starBase.s);
-      pill.position.set(pillBase.x, pillBase.y, pillBase.z);
-      pill.scale.setScalar(pillBase.s);
     }
     fit();
     if(window.ResizeObserver){ new ResizeObserver(fit).observe(stageEl); }
@@ -1149,7 +1244,8 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
 
     stageEl.classList.add('webgl-on');
 
-    var focusTarget = 0, focusCur = 0, lastR = 0;
+    var startIdx = (window.HapsayUI && window.HapsayUI.getIndex) ? window.HapsayUI.getIndex() : 0;
+    var focusTarget = startIdx, focusCur = startIdx, lastR = startIdx;
     var dragging = false, dragStartX = 0, dragStartTarget = 0, lastX = 0, vel = 0, downT = 0, moved = 0;
     var px = 0, py = 0, tpx = 0, tpy = 0;
     var lastInteract = performance.now();
@@ -1191,7 +1287,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
         var hits = ray.intersectObjects(pickMeshes, false);
         if(hits.length){ focusTarget = hits[0].object.userData.index; return; }
       }
-      focusTarget = Math.max(0, Math.min(5, Math.round(focusTarget - vel * 0.055)));
+      focusTarget = Math.max(0, Math.min(5, Math.round(focusTarget - vel * 0.028)));
     }
     el.addEventListener('pointerup', endDrag);
     el.addEventListener('pointercancel', endDrag);
@@ -1199,6 +1295,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
     el.addEventListener('webglcontextlost', function(){
       stageEl.classList.remove('webgl-on');
       running = false;
+      if(window.HapsayUI && window.HapsayUI.resyncFallback){ window.HapsayUI.resyncFallback(); }
     });
 
     window.HapsayStage = {
@@ -1249,8 +1346,6 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
       });
       star.rotation.z = Math.sin(t * 0.7) * 0.16;
       star.position.y = starBase.y + Math.sin(t * 1.25) * 0.09;
-      pill.rotation.z = -0.05 + Math.sin(t * 0.6 + 2) * 0.03;
-      pill.position.y = pillBase.y + Math.sin(t * 1.05 + 1) * 0.08;
       var r = Math.max(0, Math.min(5, Math.round(focusCur)));
       if(r !== lastR){ lastR = r; if(window.HapsayUI){ window.HapsayUI.syncCaption(r); } }
       renderer.render(scene, camera);
@@ -1265,7 +1360,7 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:52px 0 3
   } else {
     init();
   }
-})();
+};
 </script>
 </body>
 </html>
