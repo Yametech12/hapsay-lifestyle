@@ -150,6 +150,7 @@ header[data-mode="solid"]{background:var(--ground); color:var(--ink); border-bot
   font-family:'Anton','Arial Narrow',sans-serif; font-size:var(--type-word);
   letter-spacing:.34em; text-transform:uppercase; text-decoration:none; line-height:1;
   padding:var(--sp-8) 0;
+  display:inline-flex; align-items:center; min-height:44px;
 }
 nav.main{display:none}
 nav.main a{
@@ -160,6 +161,7 @@ nav.main a{
 .msg-link{
   font-size:var(--type-small); font-weight:700; letter-spacing:.14em; text-transform:uppercase;
   text-decoration:none; padding:var(--sp-8) 0;
+  display:inline-flex; align-items:center; min-height:44px;
   /* L9: the action underline */
   border-bottom:var(--line-rule) solid currentColor; padding-bottom:var(--sp-2);
 }
@@ -361,6 +363,10 @@ nav.main a{
   font-family:'Anton','Arial Narrow',sans-serif; font-weight:400; text-transform:uppercase;
   font-size:var(--type-band); line-height:1.02; max-width:16ch;
 }
+/* SK8's statement is a single line of separated words, not a sentence:
+   it takes a wider measure so the last separator stays on the first
+   line and the year stacks under it, deliberate, at every width. */
+.band .band-statement--sk8{max-width:24ch}
 .band .band-print{font-style:italic; font-size:var(--type-body); margin-top:var(--sp-16); max-width:52ch}
 .band.hair-top{border-top:var(--line-hair) solid var(--fb-label-w)}
 @media (prefers-color-scheme: dark){
@@ -371,10 +377,17 @@ nav.main a{
 
 /* ---------- solid sections ---------- */
 .solid-sec{padding:var(--sp-88) var(--sp-20)}
+/* The two boundaries where a solid section follows a long solid stretch
+   with no ground change to mark it (About into Order, Pop-up into FAQ)
+   start on the sp-44 rhythm instead of doubling the sp-88 section pad. */
+#order, #faq{padding-top:var(--sp-44)}
 .solid-sec .lede{margin-top:var(--sp-16); max-width:58ch}
 .look-grid{
   margin-top:var(--sp-44); display:grid; grid-template-columns:1fr 1fr; gap:2px;
   background:var(--ink);
+  /* the closing rule: the grid's vertical rules meet this foot rule at the
+     last row instead of ending mid-air below the final captions */
+  border-bottom:var(--line-rule) solid var(--ink);
 }
 .look-grid figure{background:var(--ground); display:flex; flex-direction:column}
 .look-ph{aspect-ratio:4/5; overflow:hidden}
@@ -507,7 +520,7 @@ nav.main a{
 }
 .lede-x{margin-top:var(--sp-16); max-width:58ch}
 .action-link{
-  display:inline-block; margin-top:var(--sp-26); font-weight:700;
+  display:inline-flex; align-items:center; min-height:44px; margin-top:var(--sp-26); font-weight:700;
   letter-spacing:.1em; text-transform:uppercase; font-size:var(--type-small);
   text-decoration:none; border-bottom:var(--line-rule) solid currentColor; padding-bottom:var(--sp-2);
 }
@@ -567,7 +580,7 @@ footer{
 }
 .foot-cols p{font-size:var(--type-small); line-height:var(--lh-small); margin-bottom:var(--sp-8)}
 .foot-cols a{
-  display:block; padding:var(--sp-6) 0; color:#FFFFFF; text-decoration:none; font-size:var(--type-small);
+  display:flex; align-items:center; min-height:44px; padding:var(--sp-6) 0; color:#FFFFFF; text-decoration:none; font-size:var(--type-small);
 }
 .foot-cols a:hover, .foot-cols a:focus-visible{
   text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px;
@@ -657,7 +670,7 @@ footer{
       </nav>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="heroColorLabel">Colorway</span>
       <div class="dots" role="group" aria-labelledby="heroColorLabel" data-sel="colorway" data-tee="Vision Tee">
@@ -695,8 +708,9 @@ footer{
   </div>
 </section>
 
-<!-- 01 VISION -->
-<section class="screen" id="card-vision" data-chapter="Vision Tee" data-header="photo" data-rm-print aria-label="Vision Tee">
+<!-- 01 VISION: starts flipped, on its print face; the hero already
+     presented the worn shot, so the same panel is not shown twice -->
+<section class="screen flipped" id="card-vision" data-chapter="Vision Tee" data-header="photo" data-rm-print aria-label="Vision Tee">
   <div class="field">
     <div class="fb-flip">
       <div class="fb-face main-face">
@@ -710,14 +724,14 @@ footer{
     <div class="chapter-top"><p class="on-photo-label">01 / Vision Tee</p></div>
     <div class="field-bottom">
       <div class="chip-row">
-        <button class="fb-chip" type="button" data-flip-btn aria-pressed="false" aria-label="Flip the Vision Tee photo">
+        <button class="fb-chip" type="button" data-flip-btn aria-pressed="true" aria-label="Flip the Vision Tee photo">
           <span class="thumb"><img class="t-main" src="img/vision-worn-828.webp" alt="" loading="lazy"><img class="t-alt" src="img/tee-vision-480.webp" alt="" loading="lazy"></span>
           <span class="chip-label"><span class="lbl-a">See the back print</span><span class="lbl-b">See it worn</span></span>
         </button>
       </div>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="lbl-vision-color">Colorway</span>
       <div class="dots" role="group" aria-labelledby="lbl-vision-color" data-sel="colorway" data-tee="Vision Tee">
@@ -736,12 +750,11 @@ footer{
     </div>
     <div class="sheet-rule"></div>
     <a class="btn btn-ink is-disabled" data-order-btn aria-disabled="true">Pick a colorway and size first</a>
-    <p class="note-line">Free stickers with every order.</p>
   </div>
 </section>
 <section class="band band-w hair-top" data-header="solid" aria-label="Vision statement">
   <p class="band-statement">Remember, everyone has the same eyes, but not the same vision.</p>
-  <p class="band-print">Star and eye back print.</p>
+  <p class="band-print">In Black and Dark Gray.</p>
 </section>
 
 <!-- 02 ENERGY -->
@@ -766,7 +779,7 @@ footer{
       </div>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="lbl-energy-color">Colorway</span>
       <div class="dots" role="group" aria-labelledby="lbl-energy-color" data-sel="colorway" data-tee="Energy Tee">
@@ -785,12 +798,11 @@ footer{
     </div>
     <div class="sheet-rule"></div>
     <a class="btn btn-ink is-disabled" data-order-btn aria-disabled="true">Pick a colorway and size first</a>
-    <p class="note-line">Free stickers with every order.</p>
   </div>
 </section>
 <section class="band band-b" data-header="solid" aria-label="Energy statement">
   <p class="band-statement">I only want peace, growth, money and good energy around me.</p>
-  <p class="band-print">Statement back print.</p>
+  <p class="band-print">In Black and White.</p>
 </section>
 
 <!-- 03 SK8 -->
@@ -815,7 +827,7 @@ footer{
       </div>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="lbl-sk8-color">Colorway</span>
       <div class="dots" role="group" aria-labelledby="lbl-sk8-color" data-sel="colorway" data-tee="SK8 Tee">
@@ -833,12 +845,11 @@ footer{
     </div>
     <div class="sheet-rule"></div>
     <a class="btn btn-ink is-disabled" data-order-btn aria-disabled="true">Pick a colorway and size first</a>
-    <p class="note-line">Free stickers with every order.</p>
   </div>
 </section>
 <section class="band band-w hair-top" data-header="solid" aria-label="SK8 statement">
-  <p class="band-statement">Roll &bull; Fall &bull; Repeat &bull; 1998</p>
-  <p class="band-print">Cartoon skater back print.</p>
+  <p class="band-statement band-statement--sk8">Roll &bull; Fall &bull; Repeat&nbsp;&bull;<br>1998</p>
+  <p class="band-print">In White.</p>
 </section>
 
 <!-- 04 MADE -->
@@ -863,7 +874,7 @@ footer{
       </div>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="lbl-made-color">Colorway</span>
       <div class="dots" role="group" aria-labelledby="lbl-made-color" data-sel="colorway" data-tee="Made Tee">
@@ -881,23 +892,25 @@ footer{
     </div>
     <div class="sheet-rule"></div>
     <a class="btn btn-ink is-disabled" data-order-btn aria-disabled="true">Pick a colorway and size first</a>
-    <p class="note-line">Free stickers with every order.</p>
   </div>
 </section>
 <section class="band band-b" data-header="solid" aria-label="Made statement">
   <p class="band-statement">Hapsay</p>
-  <p class="band-print">The heart-shaped Hapsay script logo on red.</p>
+  <p class="band-print">In Red.</p>
 </section>
 
-<!-- 05 GET OUTSIDE -->
+<!-- 05 GET OUTSIDE: the full tee is the main face and the close-up is the
+     flip face. In the close-up at phone size the statement's lower right
+     sits under the flip chip and cannot be read; on the full tee the whole
+     statement clears the chip. Both photographs are this tee's own. -->
 <section class="screen" id="card-outside" data-chapter="Get Outside Tee" data-header="photo" data-rm-print aria-label="Get Outside Tee">
   <div class="field">
     <div class="fb-flip">
       <div class="fb-face main-face">
-        <img src="img/look-outside.webp" width="800" height="1000" alt="Close-up of the Get Outside tee character jumping out of a phone" loading="lazy">
+        <img src="img/tee-outside-800.webp" srcset="img/tee-outside-480.webp 480w, img/tee-outside-800.webp 800w" sizes="100vw" width="800" height="800" alt="Get Outside tee in cream with character back graphic" loading="lazy">
       </div>
       <div class="fb-face alt-face">
-        <img src="img/tee-outside-800.webp" srcset="img/tee-outside-480.webp 480w, img/tee-outside-800.webp 800w" sizes="100vw" width="800" height="800" alt="Get Outside tee in cream with character back graphic" loading="lazy">
+        <img src="img/look-outside.webp" width="800" height="1000" alt="Close-up of the Get Outside tee character jumping out of a phone" loading="lazy">
       </div>
     </div>
     <div class="scrim scrim-top"></div>
@@ -905,13 +918,13 @@ footer{
     <div class="field-bottom">
       <div class="chip-row">
         <button class="fb-chip" type="button" data-flip-btn aria-pressed="false" aria-label="Flip the Get Outside Tee photo">
-          <span class="thumb"><img class="t-main" src="img/look-outside.webp" alt="" loading="lazy"><img class="t-alt" src="img/tee-outside-480.webp" alt="" loading="lazy"></span>
-          <span class="chip-label"><span class="lbl-a">See the back print</span><span class="lbl-b">See it worn</span></span>
+          <span class="thumb"><img class="t-main" src="img/tee-outside-480.webp" alt="" loading="lazy"><img class="t-alt" src="img/look-outside.webp" alt="" loading="lazy"></span>
+          <span class="chip-label"><span class="lbl-a">See the print up close</span><span class="lbl-b">See the full tee</span></span>
         </button>
       </div>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="lbl-outside-color">Colorway</span>
       <div class="dots" role="group" aria-labelledby="lbl-outside-color" data-sel="colorway" data-tee="Get Outside Tee">
@@ -929,12 +942,11 @@ footer{
     </div>
     <div class="sheet-rule"></div>
     <a class="btn btn-ink is-disabled" data-order-btn aria-disabled="true">Pick a colorway and size first</a>
-    <p class="note-line">Free stickers with every order.</p>
   </div>
 </section>
 <section class="band band-w hair-top" data-header="solid" aria-label="Get Outside statement">
   <p class="band-statement">Get out of your phone.</p>
-  <p class="band-print">Character back graphic.</p>
+  <p class="band-print">In Cream.</p>
 </section>
 
 <!-- 06 LIFESTYLE -->
@@ -959,7 +971,7 @@ footer{
       </div>
     </div>
   </div>
-  <div class="sheet">
+  <div class="sheet" data-header="solid">
     <div class="sel-row">
       <span class="sel-label" id="lbl-lifestyle-color">Colorway</span>
       <div class="dots" role="group" aria-labelledby="lbl-lifestyle-color" data-sel="colorway" data-tee="Lifestyle Tee">
@@ -977,12 +989,11 @@ footer{
     </div>
     <div class="sheet-rule"></div>
     <a class="btn btn-ink is-disabled" data-order-btn aria-disabled="true">Pick a colorway and size first</a>
-    <p class="note-line">Free stickers with every order.</p>
   </div>
 </section>
 <section class="band band-b" data-header="solid" aria-label="Lifestyle statement">
   <p class="band-statement">Lifestyle</p>
-  <p class="band-print">Cursive back wordmark.</p>
+  <p class="band-print">In Black.</p>
 </section>
 
 <!-- LOOKBOOK: ruled grid, 2px ink gaps, L6 caption rules -->
@@ -993,27 +1004,27 @@ footer{
   <div class="look-grid">
     <figure>
       <div class="look-ph"><img src="img/look-vision.webp" width="800" height="1000" alt="Close-up of the Vision tee star and eye back print" loading="lazy"></div>
-      <figcaption><b>Vision Tee</b><span>Star and eye, up close</span></figcaption>
+      <figcaption><b>Vision Tee</b><span>Black, Dark Gray</span></figcaption>
     </figure>
     <figure>
       <div class="look-ph"><img src="img/look-energy.webp" width="800" height="1000" alt="Close-up of the Energy tee statement back print" loading="lazy"></div>
-      <figcaption><b>Energy Tee</b><span>The statement, up close</span></figcaption>
+      <figcaption><b>Energy Tee</b><span>Black, White</span></figcaption>
     </figure>
     <figure>
       <div class="look-ph"><img src="img/look-sk8.webp" width="800" height="1000" alt="Close-up of the SK8 tee cartoon skater back print" loading="lazy"></div>
-      <figcaption><b>SK8 Tee</b><span>Cartoon skater, up close</span></figcaption>
+      <figcaption><b>SK8 Tee</b><span>White</span></figcaption>
     </figure>
     <figure>
       <div class="look-ph"><img src="img/look-made.webp" width="800" height="1000" alt="Close-up of the Made tee heart-shaped Hapsay script logo" loading="lazy"></div>
-      <figcaption><b>Made Tee</b><span>Heart script, up close</span></figcaption>
+      <figcaption><b>Made Tee</b><span>Red</span></figcaption>
     </figure>
     <figure>
       <div class="look-ph"><img src="img/look-outside.webp" width="800" height="1000" alt="Close-up of the Get Outside tee character jumping out of a phone" loading="lazy"></div>
-      <figcaption><b>Get Outside Tee</b><span>Out of the phone, up close</span></figcaption>
+      <figcaption><b>Get Outside Tee</b><span>Cream</span></figcaption>
     </figure>
     <figure>
       <div class="look-ph"><img src="img/look-lifestyle.webp" width="800" height="1000" alt="Close-up of the Lifestyle tee cursive back wordmark" loading="lazy"></div>
-      <figcaption><b>Lifestyle Tee</b><span>Cursive back, up close</span></figcaption>
+      <figcaption><b>Lifestyle Tee</b><span>Black</span></figcaption>
     </figure>
     <figure>
       <div class="look-ph"><img src="img/packing-800.webp" srcset="img/packing-800.webp 800w, img/packing-1200.webp 1200w" sizes="(max-width: 899px) 50vw, 25vw" width="800" height="533" alt="Folded Hapsay tees with a pink mailer and free stickers, packed and ready to ship" loading="lazy"></div>
@@ -1121,8 +1132,8 @@ footer{
     <div class="scrim scrim-top"></div>
     <div class="badge" aria-hidden="true">
       <svg viewBox="0 0 200 200" focusable="false">
-        <polygon points="100.0,3.0 115.4,22.5 137.1,10.4 143.9,34.3 168.6,31.4 165.7,56.1 189.6,62.9 177.5,84.6 197.0,100.0 177.5,115.4 189.6,137.1 165.7,143.9 168.6,168.6 143.9,165.7 137.1,189.6 115.4,177.5 100.0,197.0 84.6,177.5 62.9,189.6 56.1,165.7 31.4,168.6 34.3,143.9 10.4,137.1 22.5,115.4 3.0,100.0 22.5,84.6 10.4,62.9 34.3,56.1 31.4,31.4 56.1,34.3 62.9,10.4 84.6,22.5" fill="#A31621" stroke="#000000" stroke-width="5" stroke-linejoin="round"></polygon>
-        <polygon points="100.0,12.0 113.9,29.9 133.7,18.7 139.7,40.5 162.2,37.8 159.5,60.3 181.3,66.3 170.1,86.1 188.0,100.0 170.1,113.9 181.3,133.7 159.5,139.7 162.2,162.2 139.7,159.5 133.7,181.3 113.9,170.1 100.0,188.0 86.1,170.1 66.3,181.3 60.3,159.5 37.8,162.2 40.5,139.7 18.7,133.7 29.9,113.9 12.0,100.0 29.9,86.1 18.7,66.3 40.5,60.3 37.8,37.8 60.3,40.5 66.3,18.7 86.1,29.9" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"></polygon>
+        <polygon points="100.0,3.0 115.4,22.5 137.1,10.4 143.9,34.3 168.6,31.4 165.7,56.1 189.6,62.9 177.5,84.6 197.0,100.0 177.5,115.4 189.6,137.1 165.7,143.9 168.6,168.6 143.9,165.7 137.1,189.6 115.4,177.5 100.0,197.0 84.6,177.5 62.9,189.6 56.1,165.7 31.4,168.6 34.3,143.9 10.4,137.1 22.5,115.4 3.0,100.0 22.5,84.6 10.4,62.9 34.3,56.1 31.4,31.4 56.1,34.3 62.9,10.4 84.6,22.5" fill="#A31621" stroke="#000000" stroke-width="3" stroke-linejoin="round"></polygon>
+        <polygon points="100.0,7.8 114.6,26.4 135.3,14.9 141.7,37.6 165.2,34.8 162.4,58.3 185.1,64.7 173.6,85.4 192.2,100.0 173.6,114.6 185.1,135.3 162.4,141.7 165.2,165.2 141.7,162.4 135.3,185.1 114.6,173.6 100.0,192.2 85.4,173.6 64.7,185.1 58.3,162.4 34.8,165.2 37.6,141.7 14.9,135.3 26.4,114.6 7.8,100.0 26.4,85.4 14.9,64.7 37.6,58.3 34.8,34.8 58.3,37.6 64.7,14.9 85.4,26.4" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"></polygon>
       </svg>
       <span>Frights &amp; Finds</span>
     </div>
@@ -1207,7 +1218,7 @@ footer{
     </div>
     <div>
       <h3>Ordering</h3>
-      <p>Sizes Small to XL. Free stickers with every order.</p>
+      <p>Sizes Small to XL.</p>
       <a href="https://www.facebook.com/HapsayLifestyle" target="_blank" rel="noopener">Facebook</a>
       <a href="https://m.me/HapsayLifestyle" target="_blank" rel="noopener">Messenger</a>
     </div>
@@ -1246,10 +1257,15 @@ footer{
   var header = document.querySelector('header');
   var headerZones = document.querySelectorAll('[data-header]');
   function updateHeaderMode(){
+    // The deepest zone under the probe wins. A configure sheet is a solid
+    // zone nested inside its photo screen and comes later in document
+    // order, so the last match is the surface the header actually sits on:
+    // over a sheet the header takes its solid ground instead of carrying
+    // white photo ink over a white panel.
     var probe = 40, mode = 'photo';
     for(var i = 0; i < headerZones.length; i++){
       var r = headerZones[i].getBoundingClientRect();
-      if(r.top <= probe && r.bottom > probe){ mode = headerZones[i].getAttribute('data-header'); break; }
+      if(r.top <= probe && r.bottom > probe){ mode = headerZones[i].getAttribute('data-header'); }
     }
     header.setAttribute('data-mode', mode);
   }
